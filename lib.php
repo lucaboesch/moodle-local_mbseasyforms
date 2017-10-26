@@ -25,12 +25,7 @@
 defined('MOODLE_INTERNAL') || die();
 
 function local_mbseasyforms_before_footer() {
-        global $CFG, $PAGE;
-        //get current theme
-        $theme = $CFG->theme;
-
-        //get More Options String
-        $moreoptions = get_string('moreoptions', 'local_mbseasyforms');
+        global $PAGE;
 
         //read data from config
         $config = get_config('local_mbseasyforms', 'easyformsconfig');
