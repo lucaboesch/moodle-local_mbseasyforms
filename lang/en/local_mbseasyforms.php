@@ -44,5 +44,5 @@ Example:<br>
 }';
 $string['pluginname'] = 'mebis Easy Forms';
 $string['useeasyforms'] = 'Use shortened forms';
-$string['csssettings'] = 'Custom css';
-
+$string['showall'] = 'All Settings';
+$string['showless'] = 'Less Settings';

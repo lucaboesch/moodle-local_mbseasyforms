@@ -43,4 +43,5 @@ Beginnend mit der body#id können Elemente über die fitem_id hinzugeschaltet we
 }';
 $string['pluginname'] = 'mebis Easy Forms';
 $string['useeasyforms'] = 'Verkürzte Formulare verwenden';
-$string['csssettings'] = 'Eigenes Css';
+$string['showall'] = 'Alle Einstellungen';
+$string['showless'] = 'Weniger Einstellungen';

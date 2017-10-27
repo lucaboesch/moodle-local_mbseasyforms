@@ -16,6 +16,8 @@ define(['jquery'], function($) {
  				var config = JSON.parse(`{}`);
  			}
  			var theme = tmp[1];
+ 			var showall = tmp[2];
+ 			var showless = tmp[3];
 	    	var body_id = $('body').attr('id');
 	    	var has_config = false;
 	    	var default_disabled = false;
@@ -80,7 +82,7 @@ define(['jquery'], function($) {
             //Is there a collapse all option - then create link inside its div
             if ( $('.collapsible-actions').length )
             {
-            	$('.collapsible-actions').prepend("<a id='easyform_click' href='#' role='button' class='easyform " + theme + "'>EasyForm</a>");
+            	$('.collapsible-actions').prepend("<a id='easyform_click' href='#' role='button' class='easyform " + theme + "'>"+ showall +"</a>");
 
             }
 
@@ -88,10 +90,10 @@ define(['jquery'], function($) {
             if (default_disabled)
             {
             	$('#easyform_click').addClass('collapsed');
+            	$('#easyform_click').html(showless);
             }
 
         	//Easyform switch
-			Y.on('domready', function(){
 	            $( "#easyform_click").click(function(){
 	            	//hide elements
 	                $( '.newtoggle' ).each(function() {
@@ -100,8 +102,14 @@ define(['jquery'], function($) {
 	                //adapt css
 	                $( '.toggleAdapt' ).each(function() {
 	                    $(this).toggleClass( "easyAdapt" );
-	                })        
-	         		$('#easyform_click').toggleClass('collapsed');
+	                })       
+	                if ($( '.' + css_hide ).length ) {
+	         			$('#easyform_click').removeClass('collapsed');
+	         			$('#easyform_click').html(showall);
+	                } else {
+	                	$('#easyform_click').addClass('collapsed');
+	                	$('#easyform_click').html(showless);
+	                }
 
 	         		//if collapse all was clicked before uncollapse
 	                $( '.easyShow' ).each(function() {
@@ -109,7 +117,8 @@ define(['jquery'], function($) {
 	                })      
 	            });
 
-				//Collapse all compatibility
+			//Collapse all compatibility
+			Y.on('domready', function(){
 				$('.collapseexpand').click(function(){
 	                $( '.newtoggle' ).each(function() {
 	                    $(this).removeClass( css_hide );
@@ -120,7 +129,6 @@ define(['jquery'], function($) {
 	                $('#easyform_click').removeClass('collapsed');     										
 				});	            		
 			});            
-
  		}
     };
 

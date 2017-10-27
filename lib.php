@@ -30,11 +30,14 @@ function local_mbseasyforms_before_footer() {
         //get current theme
         $theme = $PAGE->theme->name;
 
-        //read data from config
+        //read data from config and lang
         $config = get_config('local_mbseasyforms', 'easyformsconfig');
+        //https://docs.moodle.org/dev/Useful_core_Javascript_modules -> require strings for js not recommended
+        $show_all = get_string('showall', 'local_mbseasyforms');
+        $show_less = get_string('showless', 'local_mbseasyforms');
 
         //param needs to be in array format
-        $params = array($config . '#!#' .  $theme);
+        $params = array($config .'#!#'. $theme .'#!#'. $show_all .'#!#'. $show_less);
 
         //pass them to js and initialize
         $PAGE->requires->js_call_amd('local_mbseasyforms/mbseasyforms', 'init', $params);
