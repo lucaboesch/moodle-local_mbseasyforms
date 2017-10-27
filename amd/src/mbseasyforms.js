@@ -5,7 +5,8 @@ define(['jquery'], function($) {
 		//check if there is a form with collapsible-actions on the page
  		if ( $('form.mform').length && $('.collapsible-actions').length ) {
 
- 			//variables
+ 			/*variables*/
+ 			/**********/
  			var tmp = params.split('#!#');
  			console.log(tmp);
  			try {
@@ -19,65 +20,18 @@ define(['jquery'], function($) {
 	    	var has_config = false;
 	    	var default_disabled = false;
 	    	var id_arr = [];
+	    	//read config
 	    	if ( config[body_id]) {
 	    		default_disabled = config[body_id].default_disabled;
 	    		if (config[body_id].elements) {
 		    		id_arr = config[body_id].elements;
 		    		has_config = true;
 	    		}
-	    	}
+	    	}		
 			var css_hide = "easyhide";      
 
-			//css
-			var css = `<style> 
-				.easyform {
-					padding-left: 20px;
-					padding-right: 10px;
-
-					background: no-repeat;
-					background-position: left;
-				}
-				.easyhide {
-					display: none;
-				}
-
-				fieldset.easyAdapt {
-					margin: 0px !important;
-				}
-				fieldset.easyAdapt .fcontainer {
-					padding: 0px !important;
-				}`;
-			//css adapt to theme				
-			if (theme == "boost") {
-				console.log("this");
-				css += `.easyform {
-							padding-left: 20px;
-							padding-right: 10px;
-							background: url(/mbsmoodle/theme/image.php/boost/core/1509090696/t/collapsed) 2px center no-repeat;
-						} 
-						.easyform.collapsed {
-							background-image: url(/mbsmoodle/theme/image.php/boost/core/1509090696/t/expanded);
-						}`;
-			} else if (theme == "mebis") {
-				css += `.easyform {
-							background-image: url(/mbsmoodle/theme/image.php/mebis/core/1509008026/t/collapsed);
-						} 
-						.easyform.collapsed {
-							background-image: url(/mbsmoodle/theme/image.php/mebis/core/1509008026/t/expanded);
-						}`;
-			} else if (theme == "clean") {
-				css += `.easyform {
-							padding-left: 20px;
-							padding-right: 10px;
-							background: url(/mbsmoodle/theme/image.php/clean/core/1509090696/t/collapsed) 2px center no-repeat;
-						} 
-						.easyform.collapsed {
-							background-image: url(/mbsmoodle/theme/image.php/clean/core/1509090696/t/expanded);
-						}`;
-			}
-			css += "</style>";
-			$("head").append(css);				
-
+			/*hide things*/
+			/************/
             //hide Header: legend .ftoggler
             $( '.ftoggler' ).each(function() {
                 $(this).addClass( css_hide + ' newtoggle' );
@@ -120,11 +74,13 @@ define(['jquery'], function($) {
                 $(this).addClass( 'easyAdapt toggleAdapt' );
             });
 
+            /*Create toggle link*/
+            /*******************/
             //create toggle link
             //Is there a collapse all option - then create link inside its div
             if ( $('.collapsible-actions').length )
             {
-            	$('.collapsible-actions').prepend("<a id='easyform_click' href='#' role='button' class='easyform'>EasyForm</a>");
+            	$('.collapsible-actions').prepend("<a id='easyform_click' href='#' role='button' class='easyform " + theme + "'>EasyForm</a>");
 
             }
 
