@@ -24,22 +24,232 @@
 
 defined('MOODLE_INTERNAL') || die;
 function xmldb_local_mbseasyforms_install() {
-	//set default config
-	$name = "easyformsconfig";
+  //set default config
+  $name = "easyformsconfig";
   $value  = '{
   "page-course-edit":
     {
-    "_comment": "Kurs erstellen - body_id als selektor welche elemente",
+    "_comment": "Kurs erstellen",
     "default_disabled": false,
-    "elements": ["fitem_id_category", "fitem_id_format"]
+    "elements": ["fitem_id_category", "fitem_id_format", "fitem_id_numsections"]
+  },
+  "page-course-editsection":
+    {
+    "_comment": "Beschreibung von Abschnitten",
+    "default_disabled": false,
+    "elements": ["fitem_id_name", "fitem_id_summary_editor"]
   },
   "page-user-editadvanced":
   {
-    "_comment": "Nutzerprofil - Standardmäßig deaktiviert - es muss erst angeklickt werden",
+    "_comment": "Nutzerprofil",
+    "default_disabled": false,
+    "elements": ["fitem_id_username", "fitem_id_passwordpolicyinfo", "fitem_id_newpassword", "fitem_id_email"]
+  },
+  "page-course-completion":
+  {
+    "_comment": "Kursabschluss",
+    "default_disabled": false,
+    "elements": ["fitem_id_overall_aggregation"]
+  },
+  "page-course-reset":
+  {
+    "_comment": "Kurs zurücksetzen",
     "default_disabled": true,
     "elements": []
+  },
+  "page-mod-choice-mod":
+  {
+    "_comment": "Abstimmung",
+    "default_disabled": false,
+    "elements": ["fitem_id_introeditor", "fitem_id_showdescription", "fitem_id_allowupdate", "fitem_id_allowmultiple", "fitem_id_option_1", "fitem_id_option_2", "fitem_id_option_3", "fitem_id_option_4", "fitem_id_option_5", "fitem_id_option_6", "fitem_id_option_7", "fitem_id_option_8", "fitem_id_option_9", "fitem_id_option_10", "fitem_id_option_11", "fitem_id_option_12", "fitem_id_option_13", "fitem_id_option_14", "fitem_id_option_15", "fitem_id_completion", "fitem_id_completionview", "fitem_id_completionsubmit"]
+  },
+  "page-mod-choiceanon-mod":
+  {
+    "_comment": "Abstimmung Anonym",
+    "default_disabled": false,
+    "elements": ["fitem_id_introeditor", "fitem_id_showdescription", "fitem_id_allowupdate", "fitem_id_allowmultiple", "fitem_id_option_1", "fitem_id_option_2", "fitem_id_option_3", "fitem_id_option_4", "fitem_id_option_5", "fitem_id_option_6", "fitem_id_option_7", "fitem_id_option_8", "fitem_id_option_9", "fitem_id_option_10", "fitem_id_option_11", "fitem_id_option_12", "fitem_id_option_13", "fitem_id_option_14", "fitem_id_option_15", "fitem_id_completion", "fitem_id_completionview", "fitem_id_completionsubmit"]
+  },
+  "page-mod-assign-mod":
+  {
+    "_comment": "Aufgabe",
+    "default_disabled": false,
+    "elements": ["fitem_id_introeditor", "fitem_id_showdescription", "fgroup_id_submissionplugins", "fitem_id_completion", "fitem_id_completionview", "fitem_id_completionsubmit"]
+  },
+  "page-mod-chat-mod":
+  {
+    "_comment": "Chat",
+    "default_disabled": false,
+    "elements": ["fitem_id_introeditor", "fitem_id_showdescription", "fitem_id_completion", "fitem_id_completionview"]
+  },
+  "page-mod-data-mod":
+  {
+    "_comment": "Datenbank",
+    "default_disabled": false,
+    "elements": ["fitem_id_introeditor", "fitem_id_showdescription", "fitem_id_completion", "fitem_id_completionview", "fitem_id_completionusegrade", "fgroup_id_completionentriesgroup"]
+  },
+  "page-mod-lti-mod":
+  {
+    "_comment": "Externes Tool",
+    "default_disabled": false,
+    "elements": ["fitem_id_introeditor", "fitem_id_showdescription", "fitem_id_completion", "fitem_id_completionview", "fitem_id_completionusegrade"]  
+  },
+  "page-mod-feedback-mod":
+  {
+    "_comment": "Feedback",
+    "default_disabled": false,
+    "elements": ["fitem_id_toolurl", "fitem_id_showdescription", "fitem_id_anonymous", "fitem_id_completion", "fitem_id_completionview", "fitem_id_completionsubmit"]  
+  },  
+  "page-mod-forum-mod":
+  {
+    "_comment": "Forum",
+    "default_disabled": false,
+    "elements": ["fitem_id_introeditor", "fitem_id_showdescription", "fitem_id_type", "fitem_id_completion", "fitem_id_completionview"]  
+  },
+  "page-mod-workshop-mod":
+  {
+    "_comment": "Gegenseitige Beurteilung",
+    "default_disabled": false,
+    "elements": ["fitem_id_introeditor", "fitem_id_showdescription", "fitem_id_strategy", "fgroup_id_submissiongradegroup", "fitem_id_submissiongradepass", "fgroup_id_gradinggradegroup", "fitem_id_gradinggradepass", "fitem_id_instructauthorseditor",  "fitem_id_completion", "fitem_id_completionview", "fitem_id_completionusegrade"]  
+  },
+  "page-mod-geogebra-mod":
+  {
+    "_comment": "Geogebra",
+    "default_disabled": false,
+    "elements": ["fitem_id_introeditor", "fitem_id_showdescription", "fitem_id_filetype", "fitem_id_geogebraurl", "fitem_id_geogebrafile", "fitem_id_completion", "fitem_id_completionview", "fitem_id_completionsubmit"]  
+  },
+  "page-mod-glossary-mod":
+  {
+    "_comment": "Glossar",
+    "default_disabled": false,
+    "elements": ["fitem_id_introeditor", "fitem_id_showdescription", "fitem_id_globalglossary", "fitem_id_displayformat",  "fitem_id_completion", "fitem_id_completionview", "fitem_id_completionusegrade", "fgroup_id_completionentriesgroup"]  
+  },
+  "page-mod-hotpot-mod":
+  {
+    "_comment": "HotPot",
+    "default_disabled": false,
+    "elements": ["fgroup_id_name_elements", "fitem_id_showdescription", "fitem_id_completion", "fitem_id_completionview", "fitem_id_completionusegrade", "fgroup_id_completionmingradegroup" ]  
+  },
+  "page-mod-journal-mod":
+  {
+    "_comment": "Journal",
+    "default_disabled": false,
+    "elements": ["fitem_id_introeditor", "fitem_id_showdescription", "fitem_id_completion", "fitem_id_completionview", "fitem_id_completionusegrade"]  
+  },
+  "page-mod-lesson-mod":
+  {
+    "_comment": "Lektion",
+    "default_disabled": false,
+    "elements": ["fitem_id_introeditor", "fitem_id_showdescription", "fitem_id_completion", "fitem_id_completionview", "fitem_id_completionusegrade", "fitem_id_completionendreached", "fgroup_id_completiontimespentgroup"]  
+  },
+  "page-mod-scorm-mod":
+  {
+    "_comment": "Lernpaket",
+    "default_disabled": false,
+    "elements": ["fitem_id_introeditor", "fitem_id_showdescription", "fitem_id_packagefile",  "fitem_id_completion", "fitem_id_completionview", "fitem_id_completionusegrade", "fgroup_id_completionscoregroup", "fitem_id_completionstatusrequired_2", "fitem_id_completionstatusallscos"]  
+  },
+  "page-mod-game-hangman":
+  {
+    "_comment": "Galgenmännchen",
+    "default_disabled": false,
+    "elements": ["fitem_id_sourcemodule", "fitem_id_glossaryid", "fitem_id_glossarycategoryid", "fitem_id_questioncategoryid", "fitem_id_subcategories", "fitem_id_quizid", "fitem_id_completion", "fitem_id_completionview", "fitem_id_completionusegrade", "fgroup_id_completionpassgroup"]  
+  },
+  "page-mod-game-cross":
+  {
+    "_comment": "Kreuzworträtsel",
+    "default_disabled": false,
+    "elements": ["fitem_id_sourcemodule", "fitem_id_glossaryid", "fitem_id_glossarycategoryid", "fitem_id_questioncategoryid", "fitem_id_subcategories", "fitem_id_quizid", "fitem_id_completion", "fitem_id_completionview", "fitem_id_completionusegrade", "fgroup_id_completionpassgroup"]  
+  },
+  "page-mod-game-millionaire":
+  {
+    "_comment": "Wer wird Millionär",
+    "default_disabled": false,
+    "elements": ["fitem_id_sourcemodule", "fitem_id_questioncategoryid", "fitem_id_subcategories", "fitem_id_quizid", "fitem_id_completion", "fitem_id_completionview", "fitem_id_completionusegrade", "fgroup_id_completionpassgroup"]  
+  },
+  "page-mod-quiz-mod":
+  {
+    "_comment": "Test",
+    "default_disabled": false,
+    "elements": [ "fitem_id_introeditor", "fitem_id_showdescription", "fitem_id_completion", "fitem_id_gradeboundarystatic1", "fitem_id_feedbacktext_0", "fitem_id_feedbackboundaries_0", "fitem_id_feedbacktext_1", "fitem_id_feedbackboundaries_1", "fitem_id_feedbacktext_2", "fitem_id_feedbackboundaries_2", "fitem_id_feedbacktext_3", "fitem_id_feedbackboundaries_3", "fitem_id_feedbacktext_4",  "fitem_id_gradeboundarystatic2", "fitem_id_completionview", "fitem_id_completionusegrade", "fgroup_id_completionpassgroup"]  
+  },
+  "page-mod-survey-mod":
+  {
+    "_comment": "Umfrage",
+    "default_disabled": false,
+    "elements": [ "fitem_id_introeditor", "fitem_id_showdescription", "fitem_id_completion", "fitem_id_completionview", "fitem_id_completionsubmit"]  
+  },
+  "page-mod-wiki-mod":
+  {
+    "_comment": "Wiki",
+    "default_disabled": false,
+    "elements": [ "fitem_id_introeditor", "fitem_id_showdescription", "fitem_id_wikimode", "fitem_id_completion", "fitem_id_completionview"]  
+  },
+  "page-mod-book-mod":
+  {
+    "_comment": "",
+    "default_disabled": false,
+    "elements": [ "fitem_id_introeditor", "fitem_id_showdescription", "fitem_id_completion", "fitem_id_completionview"]  
+  },
+  "page-mod-resource-mod":
+  {
+    "_comment": "Datei",
+    "default_disabled": false,
+    "elements": [ "fitem_id_introeditor", "fitem_id_showdescription", "fitem_id_files",  "fitem_id_completion", "fitem_id_completionview"]  
+  },
+  "page-mod-imscp-mod":
+  {
+    "_comment": "IMS-Content",
+    "default_disabled": false,
+    "elements": [ "fitem_id_introeditor", "fitem_id_showdescription", "fitem_id_package", "fitem_id_completion", "fitem_id_completionview"]  
+  },
+  "page-mod-lightboxgallery-mod":
+  {
+    "_comment": "Lightbox Galerie",
+    "default_disabled": false,
+    "elements": [ "fitem_id_introeditor", "fitem_id_completion", "fitem_id_completionview"]  
+  },
+  "page-mod-url-mod":
+  {
+    "_comment": "Link",
+    "default_disabled": false,
+    "elements": [ "fitem_id_introeditor", "fitem_id_showdescription", "fitem_id_completion", "fitem_id_completionview"]  
+  },
+  "page-mod-mediathek-mod":
+  {
+    "_comment": "Mediathek",
+    "default_disabled": false,
+    "elements": [ "fitem_id_introeditor", "fitem_id_showdescription", "fitem_id_display",  "fitem_id_completion", "fitem_id_completionview"]  
+  },
+  "page-mod-pmediathek-mod":
+  {
+    "_comment": "Prüfungsarchiv",
+    "default_disabled": false,
+    "elements": [ "fitem_id_introeditor", "fitem_id_showdescription", "fitem_id_display", "fitem_id_completion", "fitem_id_completionview"]  
+  },
+  "page-mod-label-mod":
+  {
+    "_comment": "Textfeld",
+    "default_disabled": false,
+    "elements": ["fitem_id_completion"]  
+  },
+  "page-mod-page-mod":
+  {
+    "_comment": "Textseite",
+    "default_disabled": false,
+    "elements": ["fitem_id_completion", "fitem_id_completionview"]  
+  },
+  "page-mod-folder-mod":
+  {
+    "_comment": "Verzeichnis",
+    "default_disabled": false,
+    "elements": [ "fitem_id_introeditor", "fitem_id_showdescription", "fitem_id_files", "fitem_id_display", "fitem_id_showexpanded", "fitem_id_studentedit", "fitem_id_showdownloadfolder",  "fitem_id_completion", "fitem_id_completionview"]  
+  },
+  "page-mod-hvp-mod":
+  {
+    "_comment": "",
+    "default_disabled": false,
+    "elements": [ , "fitem_id_completion", "fitem_id_h5peditor", "fitem_id_frame", "fitem_id_export", "fitem_id_completionview", "fitem_id_completionusegrade"]  
   }
 }';
-	set_config($name, $value, 'local_mbseasyforms');
+  set_config($name, $value, 'local_mbseasyforms');
 }
 

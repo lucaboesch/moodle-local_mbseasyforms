@@ -1,23 +1,23 @@
 define(['jquery'], function($) {
 
-    var mbseasyform = function(params) {
+	var mbseasyform = function(params) {
 
 		//check if there is a form with collapsible-actions on the page
-		if ( $('form.mform').length && $('.collapsible-actions').length ) {
+ 		if ( $('form.mform').length && $('.collapsible-actions').length ) {
 
-			/*variables*/
-			/**********/
-			var tmp = params.split('#!#');
-			try {
-				var config 	= JSON.parse(tmp[0]);
-			} catch (e) {
-				console.log("EasyForm-Plugin: Error in JSON-Config: " + e);
-				var config = JSON.parse('{}');
-			}
-			var theme = tmp[1];
-			var showall = tmp[2];
-			var showless = tmp[3];
-			var user_setting = tmp[4];
+ 			/*variables*/
+ 			/**********/
+ 			try {
+				var config 	= JSON.parse(easyconf);
+ 			} catch (e) {
+ 				console.log("EasyForm-Plugin: Error in JSON-Config: " + e);
+ 				var config = JSON.parse('{}');
+ 			}
+ 			var tmp = params.split('#!#');
+ 			var theme = tmp[0];
+ 			var showall = tmp[1];
+ 			var showless = tmp[2];
+ 			var user_setting = tmp[3];
 			var body_id = $('body').attr('id');
 			var default_disabled = false;
 			var has_config = false;
@@ -41,8 +41,7 @@ define(['jquery'], function($) {
 			// hide Input rows
 			$( '.fitem' ).each(function() {
 				//if not required or buttons (.req for bootstrap - fa-exla... for boost)
-				if ($(this).find('.req').length !== 1 && $(this).find('.fa-exclamation-circle').length !== 1
-					&& !$(this).hasClass('fitem_actionbuttons')) {
+				if ($(this).find('.req').length !== 1 && $(this).find('.fa-exclamation-circle').length !== 1 && !$(this).hasClass('fitem_actionbuttons')) {
 					//if not in specified elements
 					if (has_config)
 					{
@@ -79,33 +78,30 @@ define(['jquery'], function($) {
 
 			/*Create toggle link*/
 			/*******************/
-			Y.on('domready', function(){
-				//create toggle link
-				//Is there a collapse all option - then create link inside its div
-				if ( $('.collapsible-actions').length )
-				{
-					$('.collapsible-actions').prepend(
-						"<a id='easyform_click' href='#' role='button' class='easyform " + theme + "'>"+ showall +"</a>"
-					);
+			//create toggle link
+			//Is there a collapse all option - then create link inside its div
+			if ( $('.collapsible-actions').length )
+			{
+				$('.collapsible-actions').prepend("<a id='easyform_click' href='#' role='button' class='easyform " + theme + "'>"+ showall +"</a>");
 
-				}
+			}
 
-				//if easyform disabled through conf or user setting
-				if (default_disabled || user_setting === "0")
-				{
-					$('#easyform_click').addClass('collapsed');
-					$('#easyform_click').html(showless);
-					//show elements
-					$( '.newtoggle' ).each(function() {
-						$(this).removeClass( css_hide );
-					});
-					//adapt css
-					$( '.toggleAdapt' ).each(function() {
-						$(this).removeClass( "easyAdapt" );
-					});
-				}
+			//if easyform disabled through conf or user setting
+			if (default_disabled || user_setting === "0")
+			{
+				$('#easyform_click').addClass('collapsed');
+				$('#easyform_click').html(showless);
+				//show elements
+				$( '.newtoggle' ).each(function() {
+					$(this).removeClass( css_hide );
+				});
+				//adapt css
+				$( '.toggleAdapt' ).each(function() {
+					$(this).removeClass( "easyAdapt" );
+				});
+			}
 
-				//Easyform switch
+			//Easyform switch
 				$( "#easyform_click").click(function(){
 					//hide elements
 					$( '.newtoggle' ).each(function() {
@@ -116,21 +112,21 @@ define(['jquery'], function($) {
 						$(this).toggleClass( "easyAdapt" );
 					});
 					if ($( '.' + css_hide ).length ) {
-							$('#easyform_click').removeClass('collapsed');
-							$('#easyform_click').html(showall);
+						$('#easyform_click').removeClass('collapsed');
+						$('#easyform_click').html(showall);
 					} else {
 						$('#easyform_click').addClass('collapsed');
 						$('#easyform_click').html(showless);
 					}
 
-						//if collapse all was clicked before uncollapse
+					//if collapse all was clicked before uncollapse
 					$( '.easyShow' ).each(function() {
 						$(this).parents('.collapsible').removeClass( "collapsed" );
 					});
 				});
 
-
-				//Collapse all compatibility
+			//Collapse all compatibility
+			Y.on('domready', function(){
 				$('.collapseexpand').click(function(){
 					$( '.newtoggle' ).each(function() {
 						$(this).removeClass( css_hide );

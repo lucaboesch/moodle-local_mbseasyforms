@@ -37,8 +37,10 @@ function local_mbseasyforms_before_footer() {
         $use_mbseasyforms = get_user_preferences('local_mbseasyforms_use', 1);
 
         //param needs to be in array format
-        $params = array($config .'#!#'. $theme .'#!#'. $show_all .'#!#'. $show_less .'#!#'. $use_mbseasyforms);
+        $params = array($theme .'#!#'. $show_all .'#!#'. $show_less .'#!#'. $use_mbseasyforms);
 
         //pass them to js and initialize
+        //config too large -> pass before as object
+        $PAGE->requires->data_for_js('easyconf', $config);
         $PAGE->requires->js_call_amd('local_mbseasyforms/mbseasyforms', 'init', $params);
 }
