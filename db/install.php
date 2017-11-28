@@ -97,8 +97,8 @@ function xmldb_local_mbseasyforms_install() {
   {
     "_comment": "Feedback",
     "default_disabled": false,
-    "elements": ["fitem_id_toolurl", "fitem_id_showdescription", "fitem_id_anonymous", "fitem_id_completion", "fitem_id_completionview", "fitem_id_completionsubmit"]  
-  },  
+    "elements": ["fitem_id_toolurl", "fitem_id_introeditor", "fitem_id_showdescription", "fitem_id_anonymous", "fitem_id_completion", "fitem_id_completionview", "fitem_id_completionsubmit"]  
+  },
   "page-mod-forum-mod":
   {
     "_comment": "Forum",
@@ -108,7 +108,7 @@ function xmldb_local_mbseasyforms_install() {
   "page-mod-workshop-mod":
   {
     "_comment": "Gegenseitige Beurteilung",
-    "default_disabled": false,
+    "default_disabled": true,
     "elements": ["fitem_id_introeditor", "fitem_id_showdescription", "fitem_id_strategy", "fgroup_id_submissiongradegroup", "fitem_id_submissiongradepass", "fgroup_id_gradinggradegroup", "fitem_id_gradinggradepass", "fitem_id_instructauthorseditor",  "fitem_id_completion", "fitem_id_completionview", "fitem_id_completionusegrade"]  
   },
   "page-mod-geogebra-mod":
@@ -171,12 +171,6 @@ function xmldb_local_mbseasyforms_install() {
     "default_disabled": false,
     "elements": [ "fitem_id_introeditor", "fitem_id_showdescription", "fitem_id_completion", "fitem_id_gradeboundarystatic1", "fitem_id_feedbacktext_0", "fitem_id_feedbackboundaries_0", "fitem_id_feedbacktext_1", "fitem_id_feedbackboundaries_1", "fitem_id_feedbacktext_2", "fitem_id_feedbackboundaries_2", "fitem_id_feedbacktext_3", "fitem_id_feedbackboundaries_3", "fitem_id_feedbacktext_4",  "fitem_id_gradeboundarystatic2", "fitem_id_completionview", "fitem_id_completionusegrade", "fgroup_id_completionpassgroup"]  
   },
-  "page-mod-survey-mod":
-  {
-    "_comment": "Umfrage",
-    "default_disabled": false,
-    "elements": [ "fitem_id_introeditor", "fitem_id_showdescription", "fitem_id_completion", "fitem_id_completionview", "fitem_id_completionsubmit"]  
-  },
   "page-mod-wiki-mod":
   {
     "_comment": "Wiki",
@@ -229,25 +223,25 @@ function xmldb_local_mbseasyforms_install() {
   {
     "_comment": "Textfeld",
     "default_disabled": false,
-    "elements": ["fitem_id_completion"]  
+    "elements": [ "fitem_id_introeditor","fitem_id_completion"]  
   },
   "page-mod-page-mod":
   {
     "_comment": "Textseite",
     "default_disabled": false,
-    "elements": ["fitem_id_completion", "fitem_id_completionview"]  
+    "elements": [ "fitem_id_completion", "fitem_id_completionview"]  
   },
   "page-mod-folder-mod":
   {
-    "_comment": "Verzeichnis",
-    "default_disabled": false,
+    "_comment": "",
+    "default_disabled": true,
     "elements": [ "fitem_id_introeditor", "fitem_id_showdescription", "fitem_id_files", "fitem_id_display", "fitem_id_showexpanded", "fitem_id_studentedit", "fitem_id_showdownloadfolder",  "fitem_id_completion", "fitem_id_completionview"]  
   },
   "page-mod-hvp-mod":
   {
-    "_comment": "",
+    "_comment": "H5P",
     "default_disabled": false,
-    "elements": [ , "fitem_id_completion", "fitem_id_h5peditor", "fitem_id_frame", "fitem_id_export", "fitem_id_completionview", "fitem_id_completionusegrade"]  
+    "elements": [ "fitem_id_name", "fitem_id_introeditor", "fitem_id_showdescription", "fgroup_id_h5pactiongroup", "fitem_id_h5pfile", "fitem_id_showexpanded", "fitem_id_studentedit", "fitem_id_completion", "fitem_id_completionview", "fitem_id_completionusegrade"]  
   }
 }';
   set_config($name, $value, 'local_mbseasyforms');

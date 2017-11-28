@@ -3,21 +3,21 @@ define(['jquery'], function($) {
 	var mbseasyform = function(params) {
 
 		//check if there is a form with collapsible-actions on the page
- 		if ( $('form.mform').length && $('.collapsible-actions').length ) {
+		if ( $('form.mform').length && $('.collapsible-actions').length ) {
 
- 			/*variables*/
- 			/**********/
- 			try {
+			/*variables*/
+			/**********/
+			try {
 				var config 	= JSON.parse(easyconf);
- 			} catch (e) {
- 				console.log("EasyForm-Plugin: Error in JSON-Config: " + e);
- 				var config = JSON.parse('{}');
- 			}
- 			var tmp = params.split('#!#');
- 			var theme = tmp[0];
- 			var showall = tmp[1];
- 			var showless = tmp[2];
- 			var user_setting = tmp[3];
+			} catch (e) {
+				console.log("EasyForm-Plugin: Error in JSON-Config: " + e);
+				var config = JSON.parse('{}');
+			}
+			var tmp = params.split('#!#');
+			var theme = tmp[0];
+			var showall = tmp[1];
+			var showless = tmp[2];
+			var user_setting = tmp[3];
 			var body_id = $('body').attr('id');
 			var default_disabled = false;
 			var has_config = false;
@@ -64,6 +64,7 @@ define(['jquery'], function($) {
 					{
 						$(this).addClass( css_hide + ' newtoggle' );
 					}
+					// collapse_all.addClass(css_hide);
 				}
 				else {
 					//mark element as to show
@@ -82,8 +83,8 @@ define(['jquery'], function($) {
 			//Is there a collapse all option - then create link inside its div
 			if ( $('.collapsible-actions').length )
 			{
-				$('.collapsible-actions').prepend("<a id='easyform_click' href='#' role='button' class='easyform " + theme + "'>"+ showall +"</a>");
-
+				$('.collapseexpand').first().addClass('hidden');
+				$('.collapsible-actions').append("<a id='easyform_click' href='#' role='button' class='easyform " + theme + "'>"+ showall +"</a>");
 			}
 
 			//if easyform disabled through conf or user setting
@@ -114,9 +115,11 @@ define(['jquery'], function($) {
 					if ($( '.' + css_hide ).length ) {
 						$('#easyform_click').removeClass('collapsed');
 						$('#easyform_click').html(showall);
+						$('.collapseexpand').first().addClass('hidden');
 					} else {
 						$('#easyform_click').addClass('collapsed');
 						$('#easyform_click').html(showless);
+						$('.collapseexpand').first().removeClass('hidden');
 					}
 
 					//if collapse all was clicked before uncollapse
@@ -134,7 +137,6 @@ define(['jquery'], function($) {
 					$( '.toggleAdapt' ).each(function() {
 						$(this).removeClass( "easyAdapt" );
 					});
-					$('#easyform_click').removeClass('collapsed');
 				});
 			});
 		}
