@@ -73,7 +73,7 @@ function xmldb_local_mbseasyforms_install() {
   {
     "_comment": "Aufgabe",
     "default_disabled": false,
-    "elements": ["fitem_id_introeditor", "fitem_id_showdescription", "fgroup_id_submissionplugins", "fitem_id_completion", "fitem_id_completionview", "fitem_id_completionsubmit"]
+    "elements": ["fitem_id_introeditor", "fitem_id_showdescription", "fgroup_id_submissionplugins", "fgroup_id_ggbturlinput", "fitem_id_usefile", "fitem_id_completion", "fitem_id_completionview", "fitem_id_completionsubmit"]
   },
   "page-mod-chat-mod":
   {
@@ -141,6 +141,12 @@ function xmldb_local_mbseasyforms_install() {
     "default_disabled": false,
     "elements": ["fitem_id_introeditor", "fitem_id_showdescription", "fitem_id_completion", "fitem_id_completionview", "fitem_id_completionusegrade", "fitem_id_completionendreached", "fgroup_id_completiontimespentgroup"]  
   },
+  "page-mod-lesson-editpage":
+  {
+    "_comment": "Lektion - Inhalt hinzufügen",
+    "default_disabled": true,
+    "elements": ["fitem_id_contents_editor", "fitem_id_jumpto_0"]  
+  },
   "page-mod-scorm-mod":
   {
     "_comment": "Lernpaket",
@@ -157,7 +163,7 @@ function xmldb_local_mbseasyforms_install() {
   {
     "_comment": "Kreuzworträtsel",
     "default_disabled": false,
-    "elements": ["fitem_id_sourcemodule", "fitem_id_glossaryid", "fitem_id_glossarycategoryid", "fitem_id_questioncategoryid", "fitem_id_subcategories", "fitem_id_quizid", "fitem_id_completion", "fitem_id_completionview", "fitem_id_completionusegrade", "fgroup_id_completionpassgroup"]  
+    "elements": ["fitem_id_sourcemodule", "fitem_id_glossaryid", "fitem_id_glossarycategoryid", "fitem_id_questioncategoryid", "fitem_id_subcategories", "fitem_id_quizid", "fitem_id_param1", "fitem_id_param4", "fitem_id_completion", "fitem_id_completionview", "fitem_id_completionusegrade", "fgroup_id_completionpassgroup"]  
   },
   "page-mod-game-millionaire":
   {
@@ -177,11 +183,17 @@ function xmldb_local_mbseasyforms_install() {
     "default_disabled": false,
     "elements": [ "fitem_id_introeditor", "fitem_id_showdescription", "fitem_id_wikimode", "fitem_id_completion", "fitem_id_completionview"]  
   },
+  "page-mod-wiki-view":
+  {
+    "_comment": "Wiki",
+    "default_disabled": true,
+    "elements": [ "fitem_id_config_enabledock"]  
+  },
   "page-mod-book-mod":
   {
     "_comment": "",
     "default_disabled": false,
-    "elements": [ "fitem_id_introeditor", "fitem_id_showdescription", "fitem_id_completion", "fitem_id_completionview"]  
+    "elements": [ "fitem_id_introeditor", "fitem_id_showdescription", "fitem_id_numbering", "fitem_id_navstyle",  "fitem_id_completion", "fitem_id_completionview"]  
   },
   "page-mod-resource-mod":
   {
