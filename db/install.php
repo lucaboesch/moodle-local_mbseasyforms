@@ -91,7 +91,13 @@ function xmldb_local_mbseasyforms_install() {
   {
     "_comment": "Externes Tool",
     "default_disabled": false,
-    "elements": ["fitem_id_introeditor", "fitem_id_showdescription", "fitem_id_completion", "fitem_id_completionview", "fitem_id_completionusegrade"]  
+    "elements": ["fitem_id_introeditor", "fitem_id_showdescription", "fitem_id_typeid", "fitem_id_selectcontent", "fitem_id_toolurl",  "fitem_id_completion", "fitem_id_completionview", "fitem_id_completionusegrade"]  
+  },
+  "page-mod-lti-instructor_edit_tool_type":
+  {
+    "_comment": "Externes Tool - Tool anlegen",
+    "default_disabled": true,
+    "elements": []  
   },
   "page-mod-feedback-mod":
   {
