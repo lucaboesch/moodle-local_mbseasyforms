@@ -260,7 +260,13 @@ function xmldb_local_mbseasyforms_install() {
     "_comment": "H5P",
     "default_disabled": false,
     "elements": [ "fitem_id_name", "fitem_id_introeditor", "fitem_id_showdescription", "fgroup_id_h5pactiongroup", "fitem_id_h5pfile", "fitem_id_showexpanded", "fitem_id_studentedit", "fitem_id_completion", "fitem_id_completionview", "fitem_id_completionusegrade"]  
-  }
+  },
+  "page-blocks-mbstpl-dupcrs":
+  {
+    "_comment": "Teachshare - Kurs kopieren",
+    "default_disabled": true,
+    "elements": []  
+  }  
 }';
   set_config($name, $value, 'local_mbseasyforms');
 }

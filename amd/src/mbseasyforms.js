@@ -77,6 +77,9 @@ define(['jquery'], function($) {
 				$(this).addClass( 'easyAdapt toggleAdapt' );
 			});
 
+			//adapt action buttons
+			$( '#fgroup_id_buttonar' ).addClass( "easyon" );
+
 			/*Create toggle link*/
 			/*******************/
 			//create toggle link
@@ -100,6 +103,7 @@ define(['jquery'], function($) {
 				$( '.toggleAdapt' ).each(function() {
 					$(this).removeClass( "easyAdapt" );
 				});
+				$( '#fgroup_id_buttonar' ).removeClass( "easyon" );
 			}
 
 			//Easyform switch
@@ -121,6 +125,9 @@ define(['jquery'], function($) {
 						$('#easyform_click').html(showless);
 						$('.collapseexpand').first().removeClass('hidden');
 					}
+
+					//adapt actionbuttons
+					$( '#fgroup_id_buttonar' ).toggleClass( "easyon" );
 
 					//if collapse all was clicked before uncollapse
 					$( '.easyShow' ).each(function() {

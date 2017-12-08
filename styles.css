@@ -15,6 +15,9 @@ fieldset.easyAdapt {
 fieldset.easyAdapt .fcontainer {
 	padding: 0px !important;
 }
+.mform #fgroup_id_buttonar.easyShow.easyon {
+	margin-top: 20px;
+}
 
 /*boost adpat*/
 .easyform.boost {
