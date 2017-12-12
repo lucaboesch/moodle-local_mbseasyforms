@@ -85,7 +85,7 @@ function xmldb_local_mbseasyforms_install() {
   {
     "_comment": "Datenbank",
     "default_disabled": false,
-    "elements": ["fitem_id_introeditor", "fitem_id_showdescription", "fitem_id_completion", "fitem_id_completionview", "fitem_id_completionusegrade", "fgroup_id_completionentriesgroup"]
+    "elements": ["fitem_id_introeditor", "fitem_id_showdescription", "fitem_id_approval", "fitem_id_completion", "fitem_id_completionview", "fitem_id_completionusegrade", "fgroup_id_completionentriesgroup"]
   },
   "page-mod-lti-mod":
   {
@@ -127,7 +127,7 @@ function xmldb_local_mbseasyforms_install() {
   {
     "_comment": "Glossar",
     "default_disabled": false,
-    "elements": ["fitem_id_introeditor", "fitem_id_showdescription", "fitem_id_globalglossary", "fitem_id_displayformat",  "fitem_id_completion", "fitem_id_completionview", "fitem_id_completionusegrade", "fgroup_id_completionentriesgroup"]  
+    "elements": ["fitem_id_introeditor", "fitem_id_showdescription", "fitem_id_globalglossary", "fitem_id_displayformat", "fitem_id_defaultapproval", "fitem_id_completion", "fitem_id_completionview", "fitem_id_completionusegrade", "fgroup_id_completionentriesgroup"]  
   },
   "page-mod-hotpot-mod":
   {
