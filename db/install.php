@@ -45,6 +45,12 @@ function xmldb_local_mbseasyforms_install() {
     "default_disabled": false,
     "elements": ["fitem_id_username", "fitem_id_passwordpolicyinfo", "fitem_id_newpassword", "fitem_id_email"]
   },
+  "page-user-edit":
+  {
+    "_comment": "Nutzerprofil (in produktiv ohne advanced)",
+    "default_disabled": false,
+    "elements": ["fitem_id_username", "fitem_id_passwordpolicyinfo", "fitem_id_newpassword", "fitem_id_email"]
+  },
   "page-course-completion":
   {
     "_comment": "Kursabschluss",
