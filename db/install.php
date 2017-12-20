@@ -45,12 +45,6 @@ function xmldb_local_mbseasyforms_install() {
     "default_disabled": false,
     "elements": ["fitem_id_username", "fitem_id_passwordpolicyinfo", "fitem_id_newpassword", "fitem_id_email"]
   },
-  "page-user-edit":
-  {
-    "_comment": "Nutzerprofil (in produktiv ohne advanced)",
-    "default_disabled": false,
-    "elements": ["fitem_id_username", "fitem_id_passwordpolicyinfo", "fitem_id_newpassword", "fitem_id_email"]
-  },
   "page-course-completion":
   {
     "_comment": "Kursabschluss",
@@ -294,6 +288,114 @@ function xmldb_local_mbseasyforms_install() {
   "page-local-mbslicenseinfo-editlicenses":
   {
     "_comment": "Quellenangaben bearbeiten",
+    "default_disabled": true,
+    "elements": []  
+  },
+  "page-question-type-algebra":
+  {
+    "_comment": "Fragensammlung - Algebra",
+    "default_disabled": true,
+    "elements": []  
+  },
+  "page-question-type-calculated":
+  {
+    "_comment": "Fragensammlung - Berechnet",
+    "default_disabled": true,
+    "elements": []  
+  },
+  "page-question-type-calculatedmulti":
+  {
+    "_comment": "Fragensammlung - Berechnete Multiple-Choice-Frage",
+    "default_disabled": true,
+    "elements": []  
+  },
+  "page-question-type-ddimageortext":
+  {
+    "_comment": "Drag-and-drop auf Bild",
+    "default_disabled": true,
+    "elements": []  
+  },
+  "page-question-type-ddwtos":
+  {
+    "_comment": "Drag-and-drop auf Text",
+    "default_disabled": true,
+    "elements": []  
+  },
+  "page-question-type-ddmarker":
+  {
+    "_comment": "Drag-and-drop auf Markierungen",
+    "default_disabled": true,
+    "elements": []  
+  },
+  "page-question-type-ddmatch":
+  {
+    "_comment": "Drag-and-drop auf Markierungen",
+    "default_disabled": true,
+    "elements": []  
+  },
+  "page-question-type-calculatedsimple":
+  {
+    "_comment": "Einfach berechnet",
+    "default_disabled": true,
+    "elements": []  
+  },
+  "page-question-type-essay":
+  {
+    "_comment": "Freitextfrage",
+    "default_disabled": true,
+    "elements": []  
+  },
+  "page-question-type-geogebra":
+  {
+    "_comment": "Geogebra",
+    "default_disabled": true,
+    "elements": []  
+  },
+  "page-question-type-shortanswer":
+  {
+    "_comment": "Kurzantowrt",
+    "default_disabled": true,
+    "elements": []  
+  },
+  "page-question-type-multianswer":
+  {
+    "_comment": "Lückentext Frage",
+    "default_disabled": true,
+    "elements": []  
+  },
+  "page-question-type-gapselect":
+  {
+    "_comment": "Lückentextauswahl",
+    "default_disabled": true,
+    "elements": []  
+  },
+  "page-question-type-multichoice":
+  {
+    "_comment": "Multiple Choice",
+    "default_disabled": true,
+    "elements": []  
+  },
+  "page-question-type-numerical":
+  {
+    "_comment": "Numerisch",
+    "default_disabled": true,
+    "elements": []  
+  },
+  "page-question-type-truefalse":
+  {
+    "_comment": "Wahr - Falsch",
+    "default_disabled": true,
+    "elements": []  
+  },
+  "page-question-type-match":
+  {
+    "_comment": "Zuordnung",
+    "default_disabled": true,
+    "elements": []  
+  },
+  "page-question-type-description":
+  {
+    "_comment": "Beschreibung",
     "default_disabled": true,
     "elements": []  
   }
