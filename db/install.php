@@ -404,6 +404,12 @@ function xmldb_local_mbseasyforms_install() {
     "_comment": "Individuelles Feedback",
     "default_disabled": false,
     "elements": ["fitem_id_timeopen", "fitem_id_timeclose"]  
+  },
+  "page-blocks-mbsteachshare-sendtemplate":
+  {
+    "_comment": "Teachshare Kurs einreichen",
+    "default_disabled": true,
+    "elements": []  
   }
 }';
   set_config($name, $value, 'local_mbseasyforms');
