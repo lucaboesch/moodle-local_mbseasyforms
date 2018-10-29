@@ -31,7 +31,6 @@ defined('MOODLE_INTERNAL') || die;
  * @copyright 2018 Tobias Garske, ISB
  */
 function xmldb_local_mbseasyforms_upgrade($oldversion) {
-    global $CFG, $DB;
 
     $newversion = 2018102200;
     if ($oldversion < $newversion) {
