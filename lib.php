@@ -29,7 +29,7 @@ defined('MOODLE_INTERNAL') || die();
  * @return void
  */
 function local_mbseasyforms_before_footer() {
-    global $PAGE;
+    global $USER, $PAGE;
 
     // Get current theme.
     $theme = $PAGE->theme->name;
@@ -38,7 +38,7 @@ function local_mbseasyforms_before_footer() {
     $config = get_config('local_mbseasyforms', 'easyformsconfig');
     $showall = get_string('showall', 'local_mbseasyforms');
     $showless = get_string('showless', 'local_mbseasyforms');
-    $usembseasyforms = get_user_preferences('local_mbseasyforms_use', 1);
+    $usembseasyforms = $USER->profile['profile_mbseasyforms_use'];
 
     // Param needs to be in array format.
     $params = array($theme . '#!#' . $showall . '#!#' . $showless . '#!#' . $usembseasyforms . '#!#' . $config);
