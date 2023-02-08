@@ -22,29 +22,35 @@
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-defined('MOODLE_INTERNAL') || die();
-
 /**
  * Before footer hook loads easyforms config and javascript.
  * @return void
  */
 function local_mbseasyforms_before_footer() {
-    global $PAGE;
+    global $USER, $PAGE;
 
     // Get current theme.
     $theme = $PAGE->theme->name;
 
     // Read data from config and lang.
-    $config = get_config('local_mbseasyforms', 'easyformsconfig');
     $showall = get_string('showall', 'local_mbseasyforms');
     $showless = get_string('showless', 'local_mbseasyforms');
-    $usembseasyforms = get_user_preferences('local_mbseasyforms_use', 1);
+    $usembseasyforms = $USER->profile['mbseasyforms'];
+    if (isset($USER->profile['mbseasyforms'])) {
+        $usembseasyforms = $USER->profile['mbseasyforms'];
+    } else {
+        $usembseasyforms = 1;
+    }
+    $useconfig = get_config('local_mbseasyforms', 'useeasyformsconfig');
+    // Conditional loading for adminconfig, since it triggers a warning because its too big.
+    $config = '';
+    if ($useconfig) {
+        $config = get_config('local_mbseasyforms', 'easyformsconfig');
+    }
 
     // Param needs to be in array format.
-    $params = array($theme . '#!#' . $showall . '#!#' . $showless . '#!#' . $usembseasyforms);
+    $params = array($theme . '#!#' . $showall . '#!#' . $showless . '#!#' . $usembseasyforms . '#!#' . $config . '#!#' . $useconfig);
 
     // Pass them to js and initialize.
-    // Config too large -> pass before as object.
-    $PAGE->requires->data_for_js('easyconf', $config);
     $PAGE->requires->js_call_amd('local_mbseasyforms/mbseasyforms', 'init', $params);
 }
