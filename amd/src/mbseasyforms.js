@@ -142,14 +142,19 @@ const mbseasyforms = (params) => {
         /*******************/
         if ($('.collapsible-actions').length) {
             $('.collapseexpand').first().addClass('hidden');
-            $('.collapsible-actions').append("<a id='easyform_click' href='#' role='button' class='easyform " + theme + " btn btn-link p-1'><span>" + showallstring + "</span></a>");
+            $('.collapsible-actions').append("<a href='#' role='button' class='easyform easyform_click " + theme + " btn btn-link p-1'><span>" + showallstring + "</span></a>");
         } else {
-            $('.mform').prepend("<div class='row'><div class='col-md-9 text-right'><a id='easyform_click' href='#' role='button' class='easyform " + theme + " btn btn-link p-1'><span>" + showallstring + "</span></a></div></div>");
+            $('.mform').prepend("<div class='row'><div class='col-md-9 text-right'><a href='#' role='button' class='easyform easyform_click " + theme + " btn btn-link p-1'><span>" + showallstring + "</span></a></div></div>");
         }
+        /*Create bottom toggle link*/
+        if ($('#fgroup_id_buttonar').length) {
+            $('#fgroup_id_buttonar').prepend("<div class='col-md-9 offset-md-3'><a href='#' id='scrolltop' role='button' class='easyform easyform_click " + theme + " btn btn-link p-1'><span>" + showallstring + "</span></a></div>");
+        }
+
         // If easyform disabled through conf or user setting.
         if (default_disabled || user_setting === "0") {
-            $('#easyform_click').addClass('collapsed');
-            $('#easyform_click').html(showlessstring);
+            $('.easyform_click').addClass('collapsed');
+            $('.easyform_click').html(showlessstring);
             // Show elements.
             $('.mbstoggle').each(function () {
                 $(this).removeClass(css_hide);
@@ -163,7 +168,7 @@ const mbseasyforms = (params) => {
             $('.collapseexpand').first().removeClass('hidden');
         }
         // Easyform switch.
-        $("#easyform_click").click(function () {
+        $(".easyform_click").on("click", {}, (function () {
             // Hide elements.
             $('.mbstoggle').each(function () {
                 $(this).toggleClass(css_hide);
@@ -173,12 +178,12 @@ const mbseasyforms = (params) => {
                 $(this).toggleClass("easyAdapt");
             });
             if ($('.' + css_hide).length) {
-                $('#easyform_click').removeClass('collapsed');
-                $('#easyform_click').html(showallstring);
+                $('.easyform_click').removeClass('collapsed');
+                $('.easyform_click').html(showallstring);
                 $('.collapseexpand').first().addClass('hidden');
             } else {
-                $('#easyform_click').addClass('collapsed');
-                $('#easyform_click').html(showlessstring);
+                $('.easyform_click').addClass('collapsed');
+                $('.easyform_click').html(showlessstring);
                 $('.collapseexpand').first().removeClass('hidden');
             }
             // Adapt actionbuttons.
@@ -199,7 +204,12 @@ const mbseasyforms = (params) => {
                     $(this).removeClass('collapse');
                 }
             });
-        });
+            // Scroll to top if clicked on bottom.
+            if ($(this).attr('id') == 'scrolltop') {
+                document.getElementById('page').scrollTo({top:300, left:0,  behavior: "smooth"});     
+            }
+        }));
+
         // Add Collapse all compatibility.
         $(document).ready(function () {
             $('.collapseexpand').click(function () {
