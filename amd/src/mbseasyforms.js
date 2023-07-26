@@ -647,6 +647,12 @@ const gethardcodedconfig = () => {
             "_comment": "Lernlandkarten Einstellungen",
             "default_disabled": false,
             "elements": ["mod_learningmap_editor"]
+        },
+        "page-mod-unilabel-edit_content":
+        {
+          "_comment": "Unilabel Content bearbeitem",
+          "default_disabled": true,
+          "elements": ["fitem_id_introeditor"]
         }
       }`;
     return config;
