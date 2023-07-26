@@ -457,7 +457,25 @@ class mbseasyforms {
             "_comment": "Tastschreiben Einstellungen",
             "default_disabled": false,
             "elements": ["fitem_id_introeditor", "fitem_id_completion", "fitem_id_completionview"]
-          }
+          },
+          "page-enrol-editinstance":
+          {
+              "_comment": "Einsschreibemethoden globale Einstellungen",
+              "default_disabled": false,
+              "elements": ["fitem_id_status", "fitem_id_roleid", "fitem_id_password", "fitem_id_customint1"]
+          },          
+          "page-mod-learningmap-mod":
+          {
+              "_comment": "Lernlandkarten Einstellungen",
+              "default_disabled": false,
+              "elements": ["mod_learningmap_editor"]
+          },          
+          "page-mod-unilabel-edit_content":
+          {
+            "_comment": "Unilabel Content bearbeitem",
+            "default_disabled": true,
+            "elements": ["fitem_id_introeditor"]
+          },
         }';
         return $config;
     }
