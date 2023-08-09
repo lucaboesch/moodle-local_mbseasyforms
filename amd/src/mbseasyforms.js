@@ -103,16 +103,25 @@ const mbseasyforms = (params) => {
                 if (has_config) {
                     var hide = true;
                     for (var i = 0, len = id_arr.length; i < len; i++) {
+                        // Dont hide if in config.
                         if ($(this).is('#' + id_arr[i])) {
                             hide = false;
-                            // Make sure it is visible.
-                            $(this).parents('.fcontainer').removeClass('collapse');
-                            // Mark element as to show.
-                            $(this).addClass('easyShow');
+                        }
+                        // Check if element has no id, and check childelements for specified elements.
+                        else if (!$(this).prop('id')) {
+                            // Check for elements, that are not fitem_id_elements.
+                            if ($(this).find('#' + id_arr[i]).length) {
+                                hide = false;
+                            }
                         }
                     }
                     if (hide) {
                         $(this).addClass(css_hide + ' mbstoggle');
+                    } else {
+                        // Make sure it is visible.
+                        $(this).parents('.fcontainer').removeClass('collapse');
+                        // Mark element as to show.
+                        $(this).addClass('easyShow');
                     }
                 } else {
                     $(this).addClass(css_hide + ' mbstoggle');
@@ -206,7 +215,7 @@ const mbseasyforms = (params) => {
             });
             // Scroll to top if clicked on bottom.
             if ($(this).attr('id') == 'scrolltop') {
-                document.getElementById('page').scrollTo({top:300, left:0,  behavior: "smooth"});     
+                document.getElementById('page').scrollTo({top:300, left:0,  behavior: "smooth"});
             }
         }));
 
@@ -236,7 +245,7 @@ const gethardcodedconfig = () => {
             {
             "_comment": "Beschreibung von Abschnitten",
             "default_disabled": false,
-            "elements": ["fitem_id_name", "fitem_id_summary_editor"]
+            "elements": ["fitem_id_name", "id_name_value", "fitem_id_summary_editor"]
         },
         "page-user-editadvanced":
         {
@@ -685,8 +694,8 @@ const gethardcodedconfig = () => {
         "page-mod-kanban-mod":
         {
             "_comment": "Kanban Board Einstellungen",
-            "default_disabled": true,
-            "elements": ["fitem_id_name", "fitem_id_history"]
+            "default_disabled": false,
+            "elements": ["fitem_id_name", "id_history"]
         },
         "page-mod-board-mod":
         {

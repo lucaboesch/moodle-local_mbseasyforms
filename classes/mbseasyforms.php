@@ -48,7 +48,7 @@ class mbseasyforms {
             {
             "_comment": "Beschreibung von Abschnitten",
             "default_disabled": false,
-            "elements": ["fitem_id_name", "fitem_id_summary_editor"]
+            "elements": ["fitem_id_name", "id_name_value", "fitem_id_summary_editor"]
           },
           "page-user-editadvanced":
           {
@@ -491,8 +491,8 @@ class mbseasyforms {
           "page-mod-kanban-mod":
           {
               "_comment": "Kanban Board Einstellungen",
-              "default_disabled": true,
-              "elements": ["fitem_id_name", "fitem_id_history"]
+              "default_disabled": false,
+              "elements": ["fitem_id_name", "id_history"]
           },
           "page-mod-board-mod":
           {
