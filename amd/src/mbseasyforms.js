@@ -103,16 +103,25 @@ const mbseasyforms = (params) => {
                 if (has_config) {
                     var hide = true;
                     for (var i = 0, len = id_arr.length; i < len; i++) {
+                        // Dont hide if in config.
                         if ($(this).is('#' + id_arr[i])) {
                             hide = false;
-                            // Make sure it is visible.
-                            $(this).parents('.fcontainer').removeClass('collapse');
-                            // Mark element as to show.
-                            $(this).addClass('easyShow');
+                        }
+                        // Check if element has no id, and check childelements for specified elements.
+                        else if (!$(this).prop('id')) {
+                            // Check for elements, that are not fitem_id_elements.
+                            if (id_arr[i].lastIndexOf('item_id_') === -1 && $(this).find('#' + id_arr[i]).length) {
+                                hide = false;
+                            }
                         }
                     }
                     if (hide) {
                         $(this).addClass(css_hide + ' mbstoggle');
+                    } else {
+                        // Make sure it is visible.
+                        $(this).parents('.fcontainer').removeClass('collapse');
+                        // Mark element as to show.
+                        $(this).addClass('easyShow');
                     }
                 } else {
                     $(this).addClass(css_hide + ' mbstoggle');
@@ -206,7 +215,7 @@ const mbseasyforms = (params) => {
             });
             // Scroll to top if clicked on bottom.
             if ($(this).attr('id') == 'scrolltop') {
-                document.getElementById('page').scrollTo({top:300, left:0,  behavior: "smooth"});     
+                document.getElementById('page').scrollTo({top:300, left:0,  behavior: "smooth"});
             }
         }));
 
@@ -230,13 +239,13 @@ const gethardcodedconfig = () => {
             {
             "_comment": "Kurs erstellen",
             "default_disabled": false,
-            "elements": ["fitem_id_category", "fitem_id_format", "fitem_id_numsections", "fitem_id_activitytype", "fitem_id_numdiscussions", "fitem_id_newsitems"]
+            "elements": ["fitem_id_category", "fitem_id_format", "fitem_id_", "fitem_id_numsections", "fitem_id_activitytype", "fitem_id_numdiscussions", "fitem_id_newsitems"]
         },
         "page-course-editsection":
             {
             "_comment": "Beschreibung von Abschnitten",
             "default_disabled": false,
-            "elements": ["fitem_id_name", "fitem_id_summary_editor"]
+            "elements": ["fitem_id_name", "id_name_value", "fitem_id_summary_editor"]
         },
         "page-user-editadvanced":
         {
@@ -685,14 +694,20 @@ const gethardcodedconfig = () => {
         "page-mod-kanban-mod":
         {
             "_comment": "Kanban Board Einstellungen",
-            "default_disabled": true,
-            "elements": ["fitem_id_name", "fitem_id_history"]
+            "default_disabled": false,
+            "elements": ["fitem_id_name", "id_history"]
         },
         "page-mod-board-mod":
         {
             "_comment": "Board Einstellungen",
             "default_disabled": true,
             "elements": ["fitem_id_name", "fitem_id_background_color", "fitem_id_background_color", "id_background_image_fieldset", "fitem_id_addrating", "fitem_id_sortby"]
+        },
+        "page-question-bank-importquestions-import":
+        {
+            "_comment": "Fragensammlung import",
+            "default_disabled": false,
+            "elements": ["fitem_id_submitbutton"]
         }
       }`;
     return config;

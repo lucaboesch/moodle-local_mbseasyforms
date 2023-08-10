@@ -42,13 +42,13 @@ class mbseasyforms {
             {
             "_comment": "Kurs erstellen",
             "default_disabled": false,
-            "elements": ["fitem_id_category", "fitem_id_format", "fitem_id_numsections", "fitem_id_activitytype", "fitem_id_numdiscussions", "fitem_id_newsitems"]
+            "elements": ["fitem_id_category", "fitem_id_format", "fitem_id_", "fitem_id_numsections", "fitem_id_activitytype", "fitem_id_numdiscussions", "fitem_id_newsitems"]
           },
           "page-course-editsection":
             {
             "_comment": "Beschreibung von Abschnitten",
             "default_disabled": false,
-            "elements": ["fitem_id_name", "fitem_id_summary_editor"]
+            "elements": ["fitem_id_name", "id_name_value", "fitem_id_summary_editor"]
           },
           "page-user-editadvanced":
           {
@@ -491,14 +491,20 @@ class mbseasyforms {
           "page-mod-kanban-mod":
           {
               "_comment": "Kanban Board Einstellungen",
-              "default_disabled": true,
-              "elements": ["fitem_id_name", "fitem_id_history"]
+              "default_disabled": false,
+              "elements": ["fitem_id_name", "id_history"]
           },
           "page-mod-board-mod":
           {
               "_comment": "Board Einstellungen",
               "default_disabled": true,
               "elements": ["fitem_id_name", "fitem_id_background_color", "fitem_id_background_color", "id_background_image_fieldset", "fitem_id_addrating", "fitem_id_sortby"]
+          },
+          "page-question-bank-importquestions-import":
+          {
+              "_comment": "Fragensammlung import",
+              "default_disabled": false,
+              "elements": ["fitem_id_submitbutton"]          
           }
         }';
         return $config;
