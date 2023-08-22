@@ -280,9 +280,9 @@ class mbseasyforms {
           },
           "page-mod-folder-mod":
           {
-            "_comment": "",
-            "default_disabled": true,
-            "elements": [ "fitem_id_introeditor", "fitem_id_showdescription", "fitem_id_files", "fitem_id_display", "fitem_id_showexpanded", "fitem_id_studentedit", "fitem_id_showdownloadfolder",  "fitem_id_completion", "fitem_id_completionview"]
+              "_comment": "Verzeichnis Einstellungen",
+              "default_disabled": false,
+              "elements": [ "fitem_id_name", "fitem_id_files", "fitem_id_display", "id_showexpanded", "id_studentedit", "id_showdownloadfolder",  "fitem_id_completion", "fitem_id_completionview"]
           },
           "page-mod-hvp-mod":
           {
@@ -474,7 +474,13 @@ class mbseasyforms {
           {
             "_comment": "Unilabel Content bearbeitem",
             "default_disabled": true,
-            "elements": ["fitem_id_introeditor"]
+            "elements": ["fitem_id_name"]
+          },
+          "page-mod-unilabel-mod":
+          {
+            "_comment": "Unilabel Einstellungen",
+            "default_disabled": false,
+            "elements": ["fitem_id_name", "fitem_id_unilabeltype", "fitem_id_completion", "fitem_id_completionview"]
           },
           "page-blocks-mbsnewcourse-restore":
           {
@@ -492,13 +498,31 @@ class mbseasyforms {
           {
               "_comment": "Kanban Board Einstellungen",
               "default_disabled": false,
-              "elements": ["fitem_id_name", "id_history"]
+              "elements": ["fitem_id_name", "id_history", "fitem_id_userboards", "fitem_id_completion", "fitem_id_completionview"]
           },
           "page-mod-board-mod":
           {
               "_comment": "Board Einstellungen",
+              "default_disabled": false,
+              "elements": ["fitem_id_name", "fitem_id_background_color", "fitem_id_background_image", "id_background_image_fieldset", "fitem_id_addrating", "fitem_id_sortby", "id_hideheaders", "fitem_id_singleusermode", "id_postbyenabled", "id_userscanedit", "id_enableblanktarget", "id_embed", "fitem_id_completion", "fitem_id_completionview"]
+          },
+          "page-mod-subcourse-mod":
+          {
+              "_comment": "Subcourse Einstellungen",
+              "default_disabled": false,
+              "elements": ["fitem_id_name", "fitem_id_refcourse", "fitem_id_completion", "fitem_id_completionview"]
+          },
+          "page-mod-checklist-mod":
+          {
+              "_comment": "Checklist Einstellungen",
+              "default_disabled": false,
+              "elements": ["fitem_id_name", "fitem_id_useritemsallowed", "fitem_id_autopopulate", "fitem_id_autoupdate", "fitem_id_completion", "fitem_id_completionview"]
+          },
+          "page-mod-ratingallocate-mod":
+          {
+              "_comment": "Ratingallocate Einstellungen",
               "default_disabled": true,
-              "elements": ["fitem_id_name", "fitem_id_background_color", "fitem_id_background_image", "id_background_image_fieldset", "fitem_id_addrating", "fitem_id_sortby", "id_hideheaders", "fitem_id_singleusermode", "id_postbyenabled", "id_userscanedit", "id_enableblanktarget", "id_embed"]
+              "elements": []
           },
           "page-question-bank-importquestions-import":
           {
