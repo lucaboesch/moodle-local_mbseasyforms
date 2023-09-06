@@ -44,3 +44,8 @@ form.mform.show > .form-group {
 fieldset.easyAdapt > div > a.btn-link {
     display: none;
 }
+/*hide more/less toggler on collapsed fieldset (MBS-7976)*/
+fieldset.easyAdapt.collapsed .moreless-actions {
+    visibility: hidden;
+    height: 0px;
+}

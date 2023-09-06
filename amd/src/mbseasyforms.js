@@ -732,6 +732,12 @@ const gethardcodedconfig = () => {
             "_comment": "Umfrage",
             "default_disabled": false,
             "elements": ["fitem_id_completion", "id_completionview", "id_completionsubmit"]
+        },
+        "page-course-reset":
+        {
+            "_comment": "Kurs zurücksetzen",
+            "default_disabled": false,
+            "elements": ["id_reset_events", "id_reset_notes", "id_reset_roles_local", "id_reset_gradebook_grades", "id_reset_forum_all"]
         }
       }`;
     return config;
