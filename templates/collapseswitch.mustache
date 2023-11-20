@@ -1,0 +1,65 @@
+{{!
+    This file is part of Moodle - http://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+    @template local_mbseasyforms/collapseswitch
+
+    Renders a form section header
+
+    Context variables required for this template:
+    * showlessstring - button string 
+    * showallstring - button string
+    * collapsestring - checkbox string
+
+    Example context (json):
+    {
+        "showlessstring": "showlessstring",
+        "showallstring": "showallstring",
+        "collapsestring": "collapsestring"
+    }
+}}
+<div class="col-12 col-md-10 offset-md-1">
+    <div class="mbseasytoggle d-flex justify-content-around mt-4 mb-4">
+        <div class="easy">{{showlessstring}}</div>
+        <div class="full">{{showallstring}}</div>
+    </div>
+</div>
+<div id="collapsesections{{uniqid}}" class="input-group col-10 offset-md-1 mbseasycollapseall easyhide collapsemenu collapsed">
+    <label class="mr-1 mb-0 collapseall" for="easycollapseall">{{collapsestring}}</label>
+    <label class="mr-1 mb-0 expandall" for="easycollapseall">{{collapsestring}}</label>
+    <div class="custom-control custom-switch pl-0">
+        <input type="checkbox" id="easycollapseall" class="custom-control-input">
+        <span class="custom-control-label">&nbsp;</span>
+    </div>
+</div>
+
+{{#js}}
+    require(['core_form/collapsesections'], function(Collapsesections) {
+    Collapsesections.init('#collapsesections{{uniqid}}');
+    });
+    // Fix for click on the checkbox directly, since it doesnt change the checked attribute.
+    $(".mbseasycollapseall .custom-switch").on("click", {}, (function () {
+        if ($(".mbseasycollapseall.collapsed").length) {
+            $('.mbseasycollapseall .custom-control-input').prop('checked', true);
+        } else {
+            $('.mbseasycollapseall .custom-control-input').prop('checked', false);
+        }
+        // Matomo tracking.
+        if (typeof _paq !== 'undefined') {
+            _paq.push(['trackEvent', 'Easyforms', 'Click toggle collapse', 'Toggle collapse']);
+        }
+    }));
+{{/js}}

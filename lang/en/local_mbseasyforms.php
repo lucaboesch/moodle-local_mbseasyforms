@@ -23,6 +23,7 @@
  */
 defined('MOODLE_INTERNAL') || die();
 
+$string['collapse'] = 'Collapse all';
 $string['displayname'] = 'Easy Forms';
 $string['easyformsconfig'] = 'Configuration';
 $string['easyformsconfig_expl'] = 'As default only required elements are shown.The configuration to show more option follows the JSON-Format.<br>

@@ -24,6 +24,8 @@
 
 import $ from 'jquery';
 import Pending from 'core/pending';
+import Templates from 'core/templates';
+import Notification from "core/notification";
 
 let css_hide = "easyhide";
 
@@ -41,7 +43,7 @@ export const init = (params) => {
     pendingPromise.resolve();
 };
 
-const mbseasyforms = (params) => {
+const mbseasyforms = async (params) => {
 
     // Show hidden form after loading is complete.
     if ($('form.mform').length) {
@@ -60,9 +62,10 @@ const mbseasyforms = (params) => {
         var theme = tmp[0];
         var showallstring = tmp[1];
         var showlessstring = tmp[2];
-        var user_setting = tmp[3];
-        var easyconf = tmp[4];
-        var useadminconf = tmp[5];
+        var collapsestring = tmp[3];
+        var user_setting = tmp[4];
+        var easyconf = tmp[5];
+        var useadminconf = tmp[6];
         if (useadminconf == 0) {
             easyconf = gethardcodedconfig();
         }
@@ -147,74 +150,91 @@ const mbseasyforms = (params) => {
         });
         // Adapt action buttons.
         $('#fgroup_id_buttonar').addClass("easyon");
-        /*Create toggle link*/
+
+        /*Create toggle and collapse all*/
         /*******************/
-        if ($('.collapsible-actions').length) {
-            $('.collapseexpand').first().addClass('hidden');
-            $('.collapsible-actions').append("<a href='#' role='button' class='easyform easyform_click " + theme + " btn btn-link p-1'><span>" + showallstring + "</span></a>");
-        } else {
-            $('.mform').prepend("<div class='row'><div class='col-md-9 text-right'><a href='#' role='button' class='easyform easyform_click " + theme + " btn btn-link p-1'><span>" + showallstring + "</span></a></div></div>");
-        }
-        /*Create bottom toggle link*/
+        const collapseConfig = {showallstring: showallstring, showlessstring: showlessstring, collapsestring: collapsestring};
+        const {html, js} = await Templates.renderForPromise('local_mbseasyforms/collapseswitch', collapseConfig);
+        Templates.replaceNodeContents('.collapsible-actions', html, js);
+
+        // Create bottom toggle link
         if ($('#fgroup_id_buttonar').length) {
-            $('#fgroup_id_buttonar').prepend("<div class='col-md-9 offset-md-3'><a href='#' id='scrolltop' role='button' class='easyform easyform_click " + theme + " btn btn-link p-1'><span>" + showallstring + "</span></a></div>");
+            $('#fgroup_id_buttonar').prepend("<div class='col-md-9 offset-md-3 mbseasytoggle link'><a href='#' id='scrolltop' role='button' class='easyform bottom " + theme + " btn btn-link p-1'><span>" + showallstring + "</span></a></div>");
         }
 
+        // Set toggle, easyforms enabled?
+        if (default_disabled || user_setting === "0") {
+            $('.mbseasytoggle .full').addClass('active');
+            $('.mbseasytoggle .easy').addClass('inactive');
+        } else {
+            $('.mbseasytoggle .easy').addClass('active');
+            $('.mbseasytoggle .full').addClass('inactive');
+        }
         // If easyform disabled through conf or user setting.
         if (default_disabled || user_setting === "0") {
-            $('.easyform_click').addClass('collapsed');
-            $('.easyform_click').html(showlessstring);
-            // Show elements.
-            $('.mbstoggle').each(function () {
-                $(this).removeClass(css_hide);
-            });
-            // Adapt css.
-            $('.toggleAdapt').each(function () {
-                $(this).removeClass("easyAdapt");
-            });
-            $('#fgroup_id_buttonar').removeClass("easyon");
-            // Show collapse all.
-            $('.collapseexpand').first().removeClass('hidden');
+            easyformsdisable();
         }
-        // Easyform switch.
-        $(".easyform_click").on("click", {}, (function () {
-            // Hide elements.
-            $('.mbstoggle').each(function () {
-                $(this).toggleClass(css_hide);
-            });
-            // Adapt css.
-            $('.toggleAdapt').each(function () {
-                $(this).toggleClass("easyAdapt");
-            });
-            if ($('.' + css_hide).length) {
-                $('.easyform_click').removeClass('collapsed');
-                $('.easyform_click').html(showallstring);
-                $('.collapseexpand').first().addClass('hidden');
-            } else {
-                $('.easyform_click').addClass('collapsed');
-                $('.easyform_click').html(showlessstring);
-                $('.collapseexpand').first().removeClass('hidden');
+        // Click on enable easyforms.
+        $(".mbseasytoggle .easy").on("click", {}, (function () {
+            if(!$(this).hasClass("active")) {
+
+                // Reflect change to button.
+                $(this).addClass("active");
+                $(this).removeClass("inactive");
+                $(".mbseasytoggle .full").addClass("inactive");
+                $(".mbseasytoggle .full").removeClass("active");
+
+                // Hide all elements not required or defined.
+                easyformsenable();
+
+                // Matomo tracking.
+                if (typeof _paq !== 'undefined') {
+                    _paq.push(['trackEvent', 'Easyforms', 'Click enable easyforms', 'Enable']);
+                }
             }
-            // Adapt actionbuttons.
-            $('#fgroup_id_buttonar').toggleClass("easyon");
-            // Fix if collapse all was clicked before showall, all would be hidden.
-            $('.easyShow').each(function () {
-                $(this).parents('.collapseable').removeClass("collapse");
-            });
-            // Close .collapseable child that should be collapsed when showall is clicked.
-            $('.collapsible.collapsed .collapseable').each(function () {
-                if (!$(this).hasClass('collapse')) {
-                    $(this).addClass('collapse');
+        }));
+        // Click disable easyforms.
+        $(".mbseasytoggle .full").on("click", {}, (function () {
+            if(!$(this).hasClass("active")) {
+
+                // Reflect change to button.
+                $(this).addClass("active");
+                $(this).removeClass("inactive");
+                $(".mbseasytoggle .easy").removeClass("active");
+                $(".mbseasytoggle .easy").addClass("inactive");
+
+                // Show hidden elements.
+                easyformsdisable();
+
+                // Scroll to top if clicked on bottom.
+                if ($(this).attr('id') == 'scrolltop') {
+                    document.getElementById('page').scrollTo({top:265, left:0,  behavior: "smooth"});
+                    // Matomo tracking.
+                    if (typeof _paq !== 'undefined') {
+                        _paq.push(['trackEvent', 'Easyforms', 'Click disable bottom link', 'Bottom link disable']);
+                    }
+                } else {
+                    // Matomo tracking.
+                    if (typeof _paq !== 'undefined') {
+                        _paq.push(['trackEvent', 'Easyforms', 'Click disable easyforms', 'Disable']);
+                    }
                 }
-            });
-            // Open .collapseable when showless is clicked.
-            $('.collapsible.easyAdapt .collapseable').each(function () {
-                if ($(this).hasClass('collapse')) {
-                    $(this).removeClass('collapse');
-                }
-            });
-            // Scroll to top if clicked on bottom.
-            if ($(this).attr('id') == 'scrolltop') {
+            }
+        }));
+        // Click disable easyforms - bottom link.
+        $(".mbseasytoggle .bottom").on("click", {}, (function () {
+            if(!$(".mbseasytoggle .full").hasClass("active")) {
+
+                // Reflect change to button.
+                $(".mbseasytoggle .full").addClass("active")
+                $(".mbseasytoggle .full").removeClass("inactive")
+                $(".mbseasytoggle .easy").addClass("inactive")
+                $(".mbseasytoggle .easy").removeClass("active");
+
+                // Show hidden elements.
+                easyformsdisable();
+
+                // Scroll to top.
                 document.getElementById('page').scrollTo({top:265, left:0,  behavior: "smooth"});
             }
         }));
@@ -230,8 +250,65 @@ const mbseasyforms = (params) => {
                 });
             });
         });
+
+        // Matomo tracking.
+        if (typeof _paq !== 'undefined') {
+            _paq.push(['trackEvent', 'Easyforms', 'Load page', 'Form loaded']);
+        }
     }
 };
+
+function easyformsenable() {
+    // Hide elements.
+    $('.mbstoggle').each(function () {
+        $(this).addClass(css_hide);
+    });
+    // Adapt css.
+    $('.toggleAdapt').each(function () {
+        $(this).addClass("easyAdapt");
+    });
+    // Adapt actionbuttons.
+    $('#fgroup_id_buttonar').addClass("easyon");
+    // Fix if collapse all was clicked before showall, all would be hidden.
+    $('.easyShow').each(function () {
+        $(this).parents('.collapseable').addClass("collapse");
+    });
+    // Open .collapseable, should them be closed before.
+    $('.collapsible.easyAdapt .collapseable').each(function () {
+        if ($(this).hasClass('collapse')) {
+            $(this).removeClass('collapse');
+        }
+    });
+    // Hide custom collapse all button.
+    $('.mbseasycollapseall').addClass(css_hide);
+
+    // Show bottom show all link.
+    $('.mbseasytoggle.link').removeClass(css_hide);
+}
+
+function easyformsdisable() {
+    // Show elements.
+    $('.mbstoggle').each(function () {
+        $(this).removeClass(css_hide);
+    });
+    // Adapt css.
+    $('.toggleAdapt').each(function () {
+        $(this).removeClass("easyAdapt");
+    });
+    // Adapt actionbuttons.
+    $('#fgroup_id_buttonar').removeClass("easyon");
+    // Show custom collapse all button.
+    $('.mbseasycollapseall').removeClass(css_hide);
+    // Close .collapseable child that should be collapsed when showall is clicked.
+    $('.collapsible.collapsed .collapseable').each(function () {
+        if (!$(this).hasClass('collapse')) {
+            $(this).addClass('collapse');
+        }
+    });
+
+    // Hide bottom show all link.
+    $('.mbseasytoggle.link').addClass(css_hide);
+}
 
 const gethardcodedconfig = () => {
     let config = `{

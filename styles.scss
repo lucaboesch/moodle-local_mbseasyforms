@@ -1,0 +1,125 @@
+/*hide elements*/
+div.easyhide {
+    display: none !important;
+}
+/*Empty space for hidden elements*/
+fieldset.easyAdapt {
+    margin: 0px !important;
+    border-bottom: 0px !important;
+
+    & > div.mb-2 {
+        margin: 0px !important;
+    }
+    .fcontainer {
+        padding: 0px !important;
+    }
+}
+
+.mform #fgroup_id_buttonar.easyShow.easyon {
+    margin-top: 20px;
+}
+
+/*hide on load*/
+form.mform {
+    fieldset {
+        visibility: hidden;
+    }
+    & > .form-group {
+        visibility: hidden;
+    }
+}
+
+/* Special restriction for mod_assign grader (MBS-7917)*/
+#page-mod-assign-grader form.mform fieldset {
+    visibility: unset;
+}
+
+/*show modals*/
+.modal form.mform {
+    fieldset {
+        visibility: visible;
+    }
+}
+form.mform.show {
+    fieldset {
+        visibility: visible;
+    }
+    & > .form-group {
+        visibility: visible;
+    }
+}
+
+/*hide help of hidden fieldset*/
+fieldset.easyAdapt > div > a.btn-link {
+    display: none;
+}
+/*hide more/less toggler on collapsed fieldset (MBS-7976)*/
+fieldset.easyAdapt.collapsed .moreless-actions {
+    visibility: hidden;
+    height: 0px;
+}
+
+div.mbseasytoggle:not(.link) {
+    background-color: var(--color-white);
+    padding: 0;
+    border-radius: 3rem;
+    border: 1px solid var(--color-easyforms-border);
+    transition: background-color 0.25s;
+    // Change background only if hovering child inactive.
+    pointer-events: none;
+    & > div.inactive {
+        pointer-events: auto;
+    }
+    &:hover {
+        background-color: var(--color-gray-light);
+    }
+}
+.dark div.mbseasytoggle:not(.link) {
+    background-color: var(--color-content-bg);
+    border-color: var(--color-input-bg-disabled);
+    &:hover  {
+        background-color: var(--color-input-bg-disabled);
+    }
+}
+.contrast div.mbseasytoggle:not(.link) {
+    border: 2px solid var(--color-input-border);
+}
+
+.mbseasytoggle div {
+        padding: .5rem;
+        flex-grow: 1;
+        text-align: center;
+        cursor: pointer;
+        transition: background-color 0.25s;
+}
+.mbseasytoggle {
+    .easy {
+        border-radius: 3rem;
+    }
+    .full {
+        border-radius: 3rem;
+    }
+    .active {
+        background-color: var(--color-neutral-100);
+        cursor: inherit;
+    }
+    & > div.active:hover {
+        background-color: var(--color-neutral-100);
+    }
+}
+
+.dark .mbseasytoggle .active {
+    background-color: var(--color-gray-light);
+    &:hover {
+        background-color: var(--color-gray-light);
+    }
+}
+
+.collapsible-actions .collapseexpand {
+    display: none;
+}
+@media (max-width: 420px) {
+    div.mbseasytoggle:not(.link) {
+        font-size: 90%;
+    }
+}

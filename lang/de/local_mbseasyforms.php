@@ -23,6 +23,7 @@
  */
 defined('MOODLE_INTERNAL') || die();
 
+$string['collapse'] = 'Alles aufklappen';
 $string['displayname'] = 'Easy Forms';
 $string['easyformsconfig'] = 'Konfiguration';
 $string['easyformsconfig_expl'] = 'Als Standard werden nur benötigte Felder angezeigt.Die Konfiguration um zusätzliche ELemente anzuzeigen des Plugins erfolgt im JSON-Format.<br>
@@ -44,5 +45,5 @@ Beginnend mit der body#id können Elemente über die fitem_id hinzugeschaltet we
 $string['pluginname'] = 'mebis Easy Forms';
 $string['useeasyforms'] = 'Vereinfachte Formulare verwenden';
 $string['useeasyformsconfig'] = 'Einbinden der Adminkonfiguration <br> (Ansonsten wird die hartkodierte Konfiguration verwendet)';
-$string['showall'] = 'Alle Einstellungen';
-$string['showless'] = 'Weniger Einstellungen';
+$string['showall'] = 'Ausführliche Eingabe';
+$string['showless'] = 'Vereinfachte Eingabe';

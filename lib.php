@@ -35,6 +35,7 @@ function local_mbseasyforms_before_footer() {
     // Read data from config and lang.
     $showall = get_string('showall', 'local_mbseasyforms');
     $showless = get_string('showless', 'local_mbseasyforms');
+    $collapse = get_string('collapse', 'local_mbseasyforms');
     if (isset($USER->profile['mbseasyforms'])) {
         $usembseasyforms = $USER->profile['mbseasyforms'];
     } else {
@@ -48,7 +49,7 @@ function local_mbseasyforms_before_footer() {
     }
 
     // Param needs to be in array format.
-    $params = array($theme . '#!#' . $showall . '#!#' . $showless . '#!#' . $usembseasyforms . '#!#' . $config . '#!#' . $useconfig);
+    $params = array($theme . '#!#' . $showall . '#!#' . $showless . '#!#' . $collapse . '#!#' . $usembseasyforms . '#!#' . $config . '#!#' . $useconfig);
 
     // Pass them to js and initialize.
     $PAGE->requires->js_call_amd('local_mbseasyforms/mbseasyforms', 'init', $params);
