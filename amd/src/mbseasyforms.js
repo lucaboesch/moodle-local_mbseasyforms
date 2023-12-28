@@ -795,8 +795,15 @@ const gethardcodedconfig = () => {
         "page-mod-ratingallocate-mod":
         {
             "_comment": "Ratingallocate Einstellungen",
-            "default_disabled": true,
-            "elements": []
+            "default_disabled": false,
+            "elements": ["fitem_id_name", "fitem_id_strategy", "fitem_id_accesstimestart", "id_accesstimestart_day", "id_accesstimestart_month", "id_accesstimestart_year", "id_accesstimestart_hour", "id_accesstimestart_minute",
+                                                               "fitem_id_accesstimestop", "id_accesstimestop_day", "id_accesstimestop_month", "id_accesstimestop_year", "id_accesstimestop_hour", "id_accesstimestop_minute", 
+                                                               "fitem_id_publishdate", "id_publishdate_day", "id_publishdate_month", "id_publishdate_year", "id_publishdate_hour", "id_publishdate_minute", 
+                                                               "fitem_id_strategyopt_strategy_yesno_maxcrossout", "fitem_id_strategyopt_strategy_yesno_0", "fitem_id_strategyopt_strategy_yesno_1",
+                                                               "id_strategyopt_strategy_yesmaybeno_0", "id_strategyopt_strategy_yesmaybeno_3", "id_strategyopt_strategy_yesmaybeno_5",
+                                                               "id_strategyopt_strategy_lickert_maxno", "id_strategyopt_strategy_lickert_countlickert", "id_strategyopt_strategy_lickert_0", "id_strategyopt_strategy_lickert_1", "id_strategyopt_strategy_lickert_2", "id_strategyopt_strategy_lickert_3", "id_strategyopt_strategy_lickert_4", 
+                                                               "id_strategyopt_strategy_points_totalpoints", "id_strategyopt_strategy_points_maxperchoice",
+                                                               "id_strategyopt_strategy_order_countoptions", "id_strategyopt_strategy_tickyes_1" ]
         },
         "page-question-bank-importquestions-import":
         {
