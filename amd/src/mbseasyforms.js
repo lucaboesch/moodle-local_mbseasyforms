@@ -778,7 +778,7 @@ const gethardcodedconfig = () => {
         {
             "_comment": "Board Einstellungen",
             "default_disabled": false,
-            "elements": ["fitem_id_name", "fitem_id_background_color", "fitem_id_background_image", "id_background_image_fieldset", "fitem_id_addrating", "fitem_id_sortby", "id_hideheaders", "fitem_id_singleusermode", "id_postbyenabled", "id_userscanedit", "id_enableblanktarget", "id_embed", "fitem_id_completion", "id_completionview", "fgroup_id_completionnotesgroup", "id_completionnotes"]
+            "elements": ["fitem_id_name", "fitem_id_background_color", "fitem_id_background_image", "id_background_image_fieldset", "fitem_id_addrating", "fitem_id_sortby", "id_hideheaders", "fitem_id_singleusermode", "id_postbyenabled", "id_userscanedit", "id_enableblanktarget", "id_embed", "fitem_id_postby", "id_postby_day", "id_postby_month", "id_postby_year", "id_postby_hour", "id_postby_minute", "fitem_id_completion", "id_completionview", "fgroup_id_completionnotesgroup", "id_completionnotes"]
         },
         "page-mod-subcourse-mod":
         {
