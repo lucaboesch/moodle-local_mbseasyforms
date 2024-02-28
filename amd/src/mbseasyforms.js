@@ -502,7 +502,7 @@ const gethardcodedconfig = () => {
         {
             "_comment": "Datei",
             "default_disabled": false,
-            "elements": [ "fitem_id_introeditor", "fitem_id_showdescription", "fitem_id_files",  "fitem_id_completion", "id_completionview"]
+            "elements": [ "fitem_id_files",  "fitem_id_completion", "id_completionview"]
         },
         "page-mod-imscp-mod":
         {
