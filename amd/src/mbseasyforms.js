@@ -826,6 +826,12 @@ const gethardcodedconfig = () => {
             "_comment": "Kurs zurücksetzen",
             "default_disabled": false,
             "elements": ["id_reset_events", "id_reset_notes", "id_reset_roles_local", "id_reset_gradebook_grades", "id_reset_forum_all"]
+        },
+        "page-local-ai_manager-quota_config":
+        {
+            "_comment": "KI Limitierungs-Einstellungen",
+            "default_disabled": false,
+            "elements": ["fitem_id_max_requests_period", "id_max_requests_period_number"]
         }
       }`;
     return config;
