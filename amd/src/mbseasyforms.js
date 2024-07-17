@@ -830,7 +830,7 @@ const gethardcodedconfig = () => {
         "page-local-ai_manager-quota_config":
         {
             "_comment": "KI Limitierungs-Einstellungen",
-            "default_disabled": false,
+            "default_disabled": true,
             "elements": ["fitem_id_max_requests_period", "id_max_requests_period_number"]
         }
       }`;
