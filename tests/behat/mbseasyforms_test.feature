@@ -1,4 +1,4 @@
-@javascript @mbseasyforms
+@local @local_mbseasyforms @javascript
 
 #Note that this test is currently NOT running.
 #After making the "Kurs erstellen" feature available again, we must check again
@@ -44,7 +44,7 @@ Feature: Shortened create course menu
     When I click on "Alle einklappen" "link"
     And I should not see "Kurs-ID"
 
- Scenario: Check mbseasyfomrs hide option
+  Scenario: Check mbseasyfomrs hide option
     Given I log in as "admin"
     And I expand "Site administration" node
     And I expand "Plugins" node
@@ -60,4 +60,3 @@ Feature: Shortened create course menu
     Then I should see "Neuen Kurs anlegen"
     And I should see "Alle Einstellungen"
     And I should see "Kurs-ID"
-

@@ -56,7 +56,10 @@ class hook_callbacks {
         }
 
         // Param needs to be in array format.
-        $params = array($theme . '#!#' . $showall . '#!#' . $showless . '#!#' . $collapse . '#!#' . $usembseasyforms . '#!#' . $config . '#!#' . $useconfig);
+        $params = [
+            $theme . '#!#' . $showall . '#!#' . $showless . '#!#' . $collapse . '#!#'
+            . $usembseasyforms . '#!#' . $config . '#!#' . $useconfig,
+        ];
 
         // Pass them to js and initialize.
         $PAGE->requires->js_call_amd('local_mbseasyforms/mbseasyforms', 'init', $params);

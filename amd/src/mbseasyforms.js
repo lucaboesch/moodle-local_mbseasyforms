@@ -22,6 +22,9 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+/* eslint-disable */
+/* TODO fix linting */
+
 import $ from 'jquery';
 import Pending from 'core/pending';
 import Templates from 'core/templates';

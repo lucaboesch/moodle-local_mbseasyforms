@@ -26,8 +26,6 @@
 
 namespace local_mbseasyforms\privacy;
 
-defined('MOODLE_INTERNAL') || die();
-
 use core_privacy\local\metadata\collection;
 use core_privacy\local\request\contextlist;
 use core_privacy\local\request\approved_contextlist;
@@ -52,7 +50,7 @@ class provider implements \core_privacy\local\metadata\provider,
      * @param collection $collection
      * @return collection
      */
-    public static function get_metadata(collection $collection) : collection {
+    public static function get_metadata(collection $collection): collection {
         return $collection->add_subsystem_link('profilefield_checkbox', [], 'privacy:metadata:explanationeasyformsenabled');
     }
 
@@ -62,7 +60,7 @@ class provider implements \core_privacy\local\metadata\provider,
      * @param   int $userid The user to search.
      * @return  contextlist $contextlist The contextlist containing the list of contexts used in this plugin.
      */
-    public static function get_contexts_for_userid(int $userid) : contextlist {
+    public static function get_contexts_for_userid(int $userid): contextlist {
         return new contextlist();
     }
 

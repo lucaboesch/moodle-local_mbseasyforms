@@ -24,6 +24,8 @@
 
 namespace local_mbseasyforms;
 
+defined('MOODLE_INTERNAL') || die;
+
 // Needed to use constants from the profile library.
 require_once(__DIR__ . '/../../../user/profile/lib.php');
 /**
@@ -34,6 +36,11 @@ require_once(__DIR__ . '/../../../user/profile/lib.php');
  */
 class mbseasyforms {
 
+    /**
+     * Create a custom profile field.
+     * @return void
+     * @throws \dml_exception
+     */
     public static function set_custom_profile_field(): void {
         global $DB;
 
@@ -56,7 +63,7 @@ class mbseasyforms {
             'param2' => '',
             'param3' => '',
             'param4' => '',
-            'param5' => ''
+            'param5' => '',
         ];
 
         // Check for standard category.
