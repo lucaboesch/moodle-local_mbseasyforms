@@ -342,12 +342,6 @@ const gethardcodedconfig = () => {
             "default_disabled": false,
             "elements": ["fitem_id_overall_aggregation"]
         },
-        "page-course-reset":
-        {
-            "_comment": "Kurs zurücksetzen",
-            "default_disabled": false,
-            "elements": []
-        },
         "page-mod-choice-mod":
         {
             "_comment": "Abstimmung",
@@ -833,7 +827,7 @@ const gethardcodedconfig = () => {
         {
             "_comment": "Kurs zurücksetzen",
             "default_disabled": false,
-            "elements": ["id_reset_events", "id_reset_notes", "id_reset_roles_local", "id_reset_gradebook_grades", "id_reset_forum_all"]
+            "elements": ["id_reset_events", "id_reset_notes", "id_reset_roles_local", "id_reset_gradebook_grades", "id_reset_forum_all", "fitem_id_submitbutton"]
         },
         "page-local-ai_manager-quota_config":
         {
