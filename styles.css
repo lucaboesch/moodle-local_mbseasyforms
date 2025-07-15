@@ -71,7 +71,7 @@ fieldset.easyAdapt.collapsed .moreless-actions {
 div.mbseasytoggle:not(.link) {
   background-color: var(--color-white);
   padding: 0;
-  border-radius: 3rem;
+  border-radius: 0;
   border: 1px solid var(--color-easyforms-border);
   transition: background-color 0.25s;
   pointer-events: none;
@@ -104,10 +104,10 @@ div.mbseasytoggle:not(.link):hover {
 }
 
 .mbseasytoggle .easy {
-  border-radius: 3rem;
+  border-radius: 0;
 }
 .mbseasytoggle .full {
-  border-radius: 3rem;
+  border-radius: 0;
 }
 .mbseasytoggle .active {
   background-color: var(--color-neutral-100);
