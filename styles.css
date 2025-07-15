@@ -1,4 +1,16 @@
 /* stylelint-disable */
+html {
+  --color-input-bg-disabled: var(--bs-secondary-bg);
+  --color-white: var(--bs-white);
+  --color-easyforms-border: var(--bs-gray-400);
+  --color-gray-light: var(--bs-dark-border-subtle);
+  --color-content-bg: var(--bs-body-bg);
+  --color-input-bg-disabled: var(--bs-dark-text-emphasis);
+  --color-input-border: var(--bs-body-color);
+  --color-neutral-100: var(--bs-gray-200);
+  --color-gray-light: var(----bs-gray-500);
+}
+
 /*hide elements*/
 div.easyhide {
   display: none !important;
