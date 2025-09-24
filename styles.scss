@@ -8,7 +8,7 @@ html {
     --color-input-bg-disabled: var(--bs-dark-text-emphasis);
     --color-input-border: var(--bs-body-color);
     --color-neutral-100: var(--bs-gray-200);
-    --color-gray-light: var(----bs-gray-500);
+    --color-gray-light: var(--bs-gray-100);
 }
 
 /*hide elements*/
@@ -128,9 +128,15 @@ div.mbseasytoggle:not(.link) {
     }
 }
 
-.collapsible-actions .collapseexpand {
-    display: none;
-}
+.collapsible-actions {
+    padding-bottom: 1.2rem;
+    .collapseexpand {
+        display: none;
+    }
+    .mbseasycollapseall {
+        margin-top: -.5rem;
+    }
+} 
 @media (max-width: 420px) {
     div.mbseasytoggle:not(.link) {
         font-size: 90%;

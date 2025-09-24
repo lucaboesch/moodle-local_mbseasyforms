@@ -8,7 +8,7 @@ html {
   --color-input-bg-disabled: var(--bs-dark-text-emphasis);
   --color-input-border: var(--bs-body-color);
   --color-neutral-100: var(--bs-gray-200);
-  --color-gray-light: var(----bs-gray-500);
+  --color-gray-light: var(--bs-gray-100);
 }
 
 /*hide elements*/
@@ -124,8 +124,14 @@ div.mbseasytoggle:not(.link):hover {
   background-color: var(--color-gray-light);
 }
 
+.collapsible-actions {
+  padding-bottom: 1.2rem;
+}
 .collapsible-actions .collapseexpand {
   display: none;
+}
+.collapsible-actions .mbseasycollapseall {
+  margin-top: -0.5rem;
 }
 
 @media (max-width: 420px) {
