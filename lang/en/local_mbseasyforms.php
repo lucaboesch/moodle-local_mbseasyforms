@@ -48,4 +48,5 @@ $string['privacy:metadata:explanationeasyformsenabled'] = 'Enable or disable Eas
 $string['showall'] = 'All Settings';
 $string['showless'] = 'Less Settings';
 $string['useeasyforms'] = 'Use shortened forms';
+$string['useeasyforms_descr'] = 'Use easyforms enabled by default.';
 $string['useeasyformsconfig'] = 'Use adminconfiguration (Otherwise hardcoded configuration is used)';

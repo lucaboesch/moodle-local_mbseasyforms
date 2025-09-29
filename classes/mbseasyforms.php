@@ -44,35 +44,44 @@ class mbseasyforms {
     public static function set_custom_profile_field(): void {
         global $DB;
 
-        // Set custom profile field for easyforms.
-        $profilefield = [
-            'shortname' => 'mbseasyforms',
-            'name' => 'vereinfachte Formulare verwenden',
-            'datatype' => 'checkbox',
-            'description' => '<p>Vereinfachte Formulare standardmäßig aktiviert.<br></p>',
-            'descriptionformat' => 1,
-            'categoryid' => 1,
-            'required' => 0,
-            'locked' => 0,
-            'visible' => PROFILE_VISIBLE_PRIVATE,
-            'forceunique' => 0,
-            'signup' => 0,
-            'defaultdata' => 1,
-            'defaultdataformat' => 0,
-            'param1' => '',
-            'param2' => '',
-            'param3' => '',
-            'param4' => '',
-            'param5' => '',
-        ];
+        $present = $DB->get_record('user_info_category', ['name' => get_string('pluginname', 'local_mbseasyforms')]);
 
-        // Check for standard category.
-        if ($DB->get_field('user_info_category', '*', ['id' => 1])) {
+        if (!$present) {
+            // Create custom profile field category as seen in tool_moodlenet:
+            // No nice API to do this, so direct DB calls it is.
+            $data = new \stdClass();
+            $data->sortorder = $DB->count_records('user_info_category') + 1;
+            $data->name = get_string('pluginname', 'local_mbseasyforms');
+            $data->id = $DB->insert_record('user_info_category', $data, true);
+
+            $createdcategory = $DB->get_record('user_info_category', array('id' => $data->id));
+            \core\event\user_info_category_created::create_from_category($createdcategory)->trigger();
+
+            // Set custom profile field for easyforms.
+            $profilefield = [
+                'shortname' => 'mbseasyforms',
+                'name' => get_string('useeasyforms', 'local_mbseasyforms'),
+                'datatype' => 'checkbox',
+                'description' => '<p>' . get_string('useeasyforms', 'local_mbseasyforms') . '<br></p>',
+                'descriptionformat' => 1,
+                'categoryid' => $data->id,
+                'required' => 0,
+                'locked' => 0,
+                'visible' => PROFILE_VISIBLE_PRIVATE,
+                'forceunique' => 0,
+                'signup' => 0,
+                'defaultdata' => 1,
+                'defaultdataformat' => 0,
+                'param1' => '',
+                'param2' => '',
+                'param3' => '',
+                'param4' => '',
+                'param5' => '',
+            ];
+
+            // Insert field.
             $DB->insert_record('user_info_field', $profilefield);
-        } else {
-            mtrace('Creation of custom profile field failed, because of missing category with ID 1');
         }
-
     }
 
     /**

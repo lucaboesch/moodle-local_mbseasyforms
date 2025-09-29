@@ -34,8 +34,9 @@ if ($hassiteconfig) {
     $ADMIN->add('localplugins', $settings);
 
     // Add button to insert default settings.
-    echo "<script id='mbseasyforms_config' type='application/json'>" . DEFAULT_SETTING . "</script>";
-
+    if (!isset($CFG->upgraderunning)) {
+        echo "<script id='mbseasyforms_config' type='application/json'>" . DEFAULT_SETTING . "</script>";
+    }
     $settings->add(new admin_setting_description(
         'local_mbseasyforms/defaultsetting',
         get_string('pastedefaultsetting', 'local_mbseasyforms'),
