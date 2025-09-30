@@ -39,18 +39,16 @@
         <div class="full">{{showallstring}}</div>
     </div>
 </div>
-<div id="collapsesections{{uniqid}}" class="input-group col-10 mbseasycollapseall{{#alignright}} mbseasycollapseall-right{{/alignright}} easyhide collapsemenu collapsed">
-    <label class="me-2 mb-0 collapseall" for="easycollapseall">{{collapsestring}}</label>
-    <label class="me-2 mb-0 expandall" for="easycollapseall">{{collapsestring}}</label>
-    <div class="form-check form-switch">
-        <input type="checkbox" id="easycollapseall" class="form-check-input">
-        <label class="form-check-label" for="easycollapseall">&nbsp;</label>
-    </div>
+<div class="collapsiblesections">
+    <a id="collapsesections{{uniqid}}" href="#" aria-expanded="false" class="btn btn-link p-1 collapseexpand collapsemenu collapsed"{{!
+            }} role="button">
+        <span class="collapseall">{{#str}}collapseall{{/str}}</span>
+        <span class="expandall">{{#str}}expandall{{/str}}</span>
+    </a>
 </div>
 
 {{#js}}
-    require(['core_form/collapsesections', 'local_mbseasyforms/collapsealltoggle'], function(Collapsesections, Collapsealltoggle) {
-        Collapsesections.init('#collapsesections{{uniqid}}');
-        Collapsealltoggle.init();
+    require(['core_form/collapsesections'], function(Collapsesections) {
+    Collapsesections.init('#collapsesections{{uniqid}}');
     });
 {{/js}}

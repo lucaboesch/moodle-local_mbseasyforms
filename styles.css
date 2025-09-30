@@ -32,10 +32,7 @@ fieldset.easyAdapt .fcontainer {
   margin-top: 20px;
 }
 
-/*hide on load*/
-form.mform fieldset {
-  visibility: hidden;
-}
+/* Hide on load*/
 form.mform > .form-group {
   visibility: hidden;
 }
@@ -127,9 +124,7 @@ div.mbseasytoggle:not(.link):hover {
 .collapsible-actions {
   padding-bottom: 1.2rem;
 }
-.collapsible-actions .collapseexpand {
-  display: none;
-}
+
 .collapsible-actions .mbseasycollapseall {
   margin-top: -0.5rem;
 }

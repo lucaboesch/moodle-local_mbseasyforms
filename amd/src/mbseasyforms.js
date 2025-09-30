@@ -208,6 +208,11 @@ const mbseasyforms = async (params) => {
             }
         }
 
+        // Hide standard collapse/expand button.
+        document.querySelectorAll('.collapsiblesections').forEach(element => {
+            element.classList.add(css_hide);
+        });
+
         // Set toggle, easyforms enabled?
         if (default_disabled || user_setting === "0") {
             addClassToElements('.mbseasytoggle .full', 'active');
@@ -350,6 +355,10 @@ function easyformsenable() {
     document.querySelectorAll('.mbseasycollapseall').forEach(element => {
         element.classList.add(css_hide);
     });
+    // Hide standard collapse/expand button.
+    document.querySelectorAll('.collapsiblesections').forEach(element => {
+        element.classList.add(css_hide);
+    });
     // Show bottom show all link.
     document.querySelectorAll('.mbseasytoggle.link').forEach(element => {
         element.classList.remove(css_hide);
@@ -379,6 +388,10 @@ function easyformsdisable() {
         if (!element.classList.contains('collapse')) {
             element.classList.add('collapse');
         }
+    });
+    // Show standard collapse/expand button.
+    document.querySelectorAll('.collapsiblesections').forEach(element => {
+        element.classList.remove(css_hide);
     });
     // Hide bottom show all link.
     document.querySelectorAll('.mbseasytoggle.link').forEach(element => {
