@@ -416,7 +416,7 @@ define('DEFAULT_SETTING', <<<'EOT'
         },
         "page-user-edit":
         {
-            "_comment": "Profil einstellungen",
+            "_comment": "Profil Einstellungen",
             "default_disabled": true,
             "elements": []
         },
@@ -442,7 +442,7 @@ define('DEFAULT_SETTING', <<<'EOT'
         {
             "_comment": "Einsschreibemethoden globale Einstellungen",
             "default_disabled": false,
-            "elements": ["fitem_id_status", "fitem_id_roleid", "enrol_class_custom", "fitem_id_customint4"]
+            "elements": ["fitem_id_status", "fitem_id_roleid", "fitem_id_customint1", "fitem_id_customint4"]
         },
         "page-mod-learningmap-mod":
         {
