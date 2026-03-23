@@ -77,6 +77,7 @@ const mbseasyforms = async (params) => {
         var showlessstring = tmp[2];
         var collapsestring = tmp[3];
         var user_setting = tmp[4];
+        var collapseallalign = tmp[5] || 'left';
         var easyconf = document.getElementById("mbseasyforms_config").textContent;
         try {
             var config = JSON.parse(easyconf);
@@ -173,7 +174,12 @@ const mbseasyforms = async (params) => {
 
         /*Create toggle and collapse all*/
         /*******************/
-        const collapseConfig = {showallstring: showallstring, showlessstring: showlessstring, collapsestring: collapsestring};
+        const collapseConfig = {
+            showallstring: showallstring,
+            showlessstring: showlessstring,
+            collapsestring: collapsestring,
+            alignright: collapseallalign === 'right',
+        };
         const {html, js} = await Templates.renderForPromise('local_mbseasyforms/collapseswitch', collapseConfig);
         Templates.replaceNodeContents('.collapsible-actions', html, js);
 

@@ -135,6 +135,9 @@ div.mbseasytoggle:not(.link) {
     }
     .mbseasycollapseall {
         margin-top: -.5rem;
+        &.mbseasycollapseall-right {
+            justify-content: flex-end;
+        }
     }
 }
 

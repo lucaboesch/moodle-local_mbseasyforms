@@ -50,3 +50,7 @@ $string['showless'] = 'Less Settings';
 $string['useeasyforms'] = 'Use shortened forms';
 $string['useeasyforms_descr'] = 'Use easyforms enabled by default.';
 $string['useeasyformsconfig'] = 'Use adminconfiguration (Otherwise hardcoded configuration is used)';
+$string['collapseallalign'] = 'Collapse all alignment';
+$string['collapseallalign_desc'] = 'Align the collapse all switch to the left or right side.';
+$string['alignleft'] = 'Left';
+$string['alignright'] = 'Right';

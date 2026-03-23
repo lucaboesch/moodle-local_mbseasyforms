@@ -55,6 +55,7 @@ class hook_callbacks {
 
         // Add config to html because of its large size.
         $config = get_config('local_mbseasyforms', 'easyformsconfig');
+        $collapseallalign = get_config('local_mbseasyforms', 'collapseallalign');
         $jsonscript = "<script id='mbseasyforms_config' type='application/json'>" .
             str_replace('</script>', '<\/script>', (string) $config) .
             '</script>';
@@ -62,7 +63,7 @@ class hook_callbacks {
 
         // Param needs to be in array format.
         $params = [
-            $theme . '#!#' . $showall . '#!#' . $showless . '#!#' . $collapse . '#!#' . $usembseasyforms,
+            $theme . '#!#' . $showall . '#!#' . $showless . '#!#' . $collapse . '#!#' . $usembseasyforms . '#!#' . $collapseallalign,
         ];
 
         // Pass them to js and initialize.
