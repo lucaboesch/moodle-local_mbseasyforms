@@ -101,7 +101,7 @@ const mbseasyforms = async (params) => {
         }
         // Hard exit if no config set.
         if (!has_config) {
-            die();
+            return;
         }
 
         /*hide things*/

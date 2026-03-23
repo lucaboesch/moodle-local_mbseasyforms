@@ -55,7 +55,10 @@ class hook_callbacks {
 
         // Add config to html because of its large size.
         $config = get_config('local_mbseasyforms', 'easyformsconfig');
-        echo "<script id='mbseasyforms_config' type='application/json'>$config</script>";
+        $jsonscript = "<script id='mbseasyforms_config' type='application/json'>" .
+            str_replace('</script>', '<\/script>', (string) $config) .
+            '</script>';
+        $hook->add_html($jsonscript);
 
         // Param needs to be in array format.
         $params = [
