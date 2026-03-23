@@ -136,7 +136,18 @@ div.mbseasytoggle:not(.link) {
     .mbseasycollapseall {
         margin-top: -.5rem;
     }
-} 
+}
+
+.stickyfooter .mbseasytoggle.link.stickyfooterlink {
+    margin-bottom: 0 !important;
+    display: flex;
+    align-items: center;
+
+    .btn {
+        white-space: nowrap;
+    }
+}
+
 @media (max-width: 420px) {
     div.mbseasytoggle:not(.link) {
         font-size: 90%;

@@ -28,8 +28,7 @@ fieldset.easyAdapt .fcontainer {
   padding: 0px !important;
 }
 
-.mform #fgroup_id_buttonar.easyShow.easyon,
-.mform [data-groupname="buttonar"].easyShow.easyon {
+.mform #fgroup_id_buttonar.easyShow.easyon {
   margin-top: 20px;
 }
 
@@ -140,7 +139,6 @@ div.mbseasytoggle:not(.link):hover {
   display: flex;
   align-items: center;
 }
-
 .stickyfooter .mbseasytoggle.link.stickyfooterlink .btn {
   white-space: nowrap;
 }
