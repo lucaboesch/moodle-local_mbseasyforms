@@ -51,5 +51,5 @@ if ($hassiteconfig) {
     $settings->add(new admin_setting_configtextarea('local_mbseasyforms/easyformsconfig',
     get_string('easyformsconfig', 'local_mbseasyforms'),
     get_string('easyformsconfig_expl', 'local_mbseasyforms'),
-    ''));
+    DEFAULT_SETTING));
 }

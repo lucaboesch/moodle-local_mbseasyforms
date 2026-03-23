@@ -26,8 +26,12 @@
  * Create a custom user profile field to switch use of easyforms.
  */
 function xmldb_local_mbseasyforms_install() {
+    global $CFG;
 
     // Set custom profile field for easyforms.
     \local_mbseasyforms\mbseasyforms::set_custom_profile_field();
 
+    // Set default easyforms config.
+    require_once($CFG->dirroot . '/local/mbseasyforms/defaultsettings.php');
+    set_config('easyformsconfig', DEFAULT_SETTING, 'local_mbseasyforms');
 }
